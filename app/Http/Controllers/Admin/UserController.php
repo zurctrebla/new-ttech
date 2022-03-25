@@ -4,16 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\{
+    RoleResource,
+    UserResource
+
+};
+use App\Services\RoleService;
 use App\Services\UserService;
 
 class UserController extends Controller
 {
     protected $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct(
+        UserService $userService,
+        RoleService $roleService
+        )
     {
         $this->userService = $userService;
+        $this->roleService = $roleService;
     }
 
     /**
@@ -24,9 +33,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userService->getUsers();
-
         $users = UserResource::collection($users);
-
         return view('admin.pages.users.index', compact('users'));
     }
 
@@ -37,7 +44,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.users.create');
+        $roles = $this->roleService->getRoles();
+        $roles =  RoleResource::collection($roles);
+        return view('admin.pages.users.create', compact('roles'));
     }
 
     /**
@@ -48,10 +57,9 @@ class UserController extends Controller
      */
     public function store(StoreUpdateUser $request)
     {
-
         $user = $this->userService->createNewUser($request->validated());
-
-        return new UserResource($user);
+        // return new UserResource($user);
+        return redirect()->route('users.index')->with('message', 'Usuário criado com sucesso');
     }
 
     /**
@@ -63,11 +71,23 @@ class UserController extends Controller
     public function show($identify)
     {
         $user = $this->userService->getUser($identify);
+        $user = new UserResource($user);
+        return view('admin.pages.users.show', compact('user'));
+    }
 
-        $users =  new UserResource($user);
-
-        return view('admin.pages.users.index', compact('users'));
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  string  $identify
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($identify)
+    {
+        $user = $this->userService->getUser($identify);
+        $user = new UserResource($user);
+        $roles = $this->roleService->getRoles();
+        $roles =  RoleResource::collection($roles);
+        return view('admin.pages.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -79,11 +99,10 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUser $request, $identify)
     {
-
+        // dd($request);
         $this->userService->updateUser($identify, $request->validated());
-
-        return response()->json(['message' => 'updated']);
-
+        // return response()->json(['message' => 'updated']);
+        return redirect()->route('users.index')->with('message', 'Usuário editado com sucesso');
     }
 
     /**
@@ -95,7 +114,7 @@ class UserController extends Controller
     public function destroy($identify)
     {
         $this->userService->deleteUser($identify);
-
-        return response()->json([], 204);
+        // return response()->json([], 204);
+        return redirect()->route('users.index')->with('message', 'Usuário deletado com sucesso');
     }
 }

@@ -23,7 +23,7 @@ class StoreUpdateUser extends FormRequest
      */
     public function rules()
     {
-        $uuid = $this->user;
+        $uuid = $this->user ?? '';
 
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:100'],

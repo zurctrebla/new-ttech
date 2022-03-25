@@ -17,6 +17,8 @@ class UserObserver
     {
         $user->uuid = Str::uuid();
         $user->password = bcrypt($user->password);
+        if(!$user->role_id)
+            $user->role_id = 1 ;
     }
 
     /**
@@ -29,6 +31,8 @@ class UserObserver
     {
         if ($user->password)
             $user->password = bcrypt($user->password);
+
+        // dd($user);
     }
 
     /**
