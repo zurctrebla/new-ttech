@@ -6,11 +6,11 @@ use App\Http\Controllers\Admin\{
 };
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    Route::get('/admin/home', [DashboardController::class, 'index'])->name('admin.index');
+    Route::get('/home', [DashboardController::class, 'index'])->name('admin.index');
 
-    Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('/users', UserController::class);
 
 });
 
@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Auth::routes();
+Auth::routes();
