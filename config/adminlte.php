@@ -234,7 +234,13 @@ return [
         [
             'text' => 'Usuários',
             'url'  => 'admin/users',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        [
+            'text' => 'Níveis de Acesso',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-key',
+            /* 'can'  => 'roles', */
         ],
     ],
 
