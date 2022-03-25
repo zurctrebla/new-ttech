@@ -33,3 +33,22 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+
+  laravel-pull:
+      name: pull
+      needs: laravel-tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Execute commands SSH
+          uses: appleboy/ssh-action@master
+          env:
+            USER_PASS: "${{ secrets.SSH_PASS }}"
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.SSH_USER }}
+            key: ${{ secrets.SSH_KEY }}
+            port: ${{ secrets.SSH_PORT }}
+            envs: SSH_PASS
+            script: |
+              cd projects/newttech
+              git pull origin master
