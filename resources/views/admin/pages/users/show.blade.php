@@ -13,10 +13,10 @@
             <span class="d-none d-md-block">
                 <a href="{{ route('users.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
                 @can('user-edit')
-                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                    <a href="{{ route('users.edit', $user->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
                 @endcan
                 @can('user-delete')
-                    <form action="{{ route('users.destroy', $user->id) }}" style="display:inline" method="POST">
+                    <form action="{{ route('users.destroy', $user->uuid) }}" style="display:inline" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o usuário ?')" >Apagar</button>
@@ -28,9 +28,9 @@
                     Ações
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-info btn-sm">Listar</a>
+                    <a href="{{ route('users.index', $user->uuid) }}" class="btn btn-outline-info btn-sm">Listar</a>
                     @can('user-edit')
-                        <a href="{{ route('users.edit', $user->id) }}" class="dropdown-item">Editar</a>
+                        <a href="{{ route('users.edit', $user->uuid) }}" class="dropdown-item">Editar</a>
                     @endcan
                     @can('user-delete')
                         <button class="dropdown-item" onclick="return confirm('Deseja apagar o usuário ?')">Apagar</button>
@@ -63,7 +63,7 @@
                             <td>{{ $user->email }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('Função') ?></th>
+                            <th><?= __('Nível de Acesso') ?></th>
                             <td>{{ $user->role->name }}</td>
                         </tr>
                     </table>

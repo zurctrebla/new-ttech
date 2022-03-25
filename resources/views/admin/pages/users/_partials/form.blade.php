@@ -29,11 +29,11 @@
          <label>Função *</label>
          <select name="role_id" class="form-control">
             <option value="">Escolha</option>
-                {{-- @foreach($roles as $role)
+                @foreach($roles as $role)
                     <option value="{{ $role->id }}" @if(isset($userRole) && $role->name == $userRole) selected @endif>
                         {{ $role->name }}
                     </option>
-                @endforeach --}}
+                @endforeach
          </select>
         </div>
     </div>
