@@ -3,10 +3,16 @@
 namespace App\Providers;
 
 use App\Models\{
+    Device,
+    Game,
+    Permission,
     Role,
     User
 };
 use App\Observers\{
+    DeviceObserver,
+    GameObserver,
+    PermissionObserver,
     RoleObserver,
     UserObserver
 };
@@ -33,5 +39,8 @@ class AppServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Role::observe(RoleObserver::class);
+        Permission::observe(PermissionObserver::class);
+        Game::observe(GameObserver::class);
+        Device::observe(DeviceObserver::class);
     }
 }
