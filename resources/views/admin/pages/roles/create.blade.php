@@ -3,7 +3,28 @@
 @section('title', 'Cadastrar Nível de Acesso')
 
 @section('content_header')
-    <h1>Cadastrar Nível de Acesso</h1>
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Cadastrar Nível de Acesso</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <span class="d-none d-md-block">
+                    <a href="{{ route('roles.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
+                </span>
+                <div class="dropdown d-block d-md-none">
+                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ações
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
+                        <a href="{{ route('roles.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
+                    </div>
+                </div>
+            </ol>
+        </div>
+        </div>
+    </div>
 @stop
 
 @section('content')

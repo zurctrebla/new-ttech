@@ -47,7 +47,6 @@ class RoleController extends Controller
     public function store(StoreUpdateRole $request)
     {
         $role = $this->roleService->createNewRole($request->validated());
-        // return new roleResource($role);
         return redirect()->route('roles.index')->with('message', 'Nível de Acesso criado com sucesso');
     }
 
@@ -87,7 +86,6 @@ class RoleController extends Controller
     public function update(StoreUpdateRole $request, $identify)
     {
         $this->roleService->updateRole($identify, $request->validated());
-        // return response()->json(['message' => 'updated']);
         return redirect()->route('roles.index')->with('message', 'Nível de Acesso editado com sucesso');
     }
 
@@ -100,7 +98,6 @@ class RoleController extends Controller
     public function destroy($identify)
     {
         $this->roleService->deleteRole($identify);
-        // return response()->json([], 204);
         return redirect()->route('roles.index')->with('message', 'Nível de Acesso deletado com sucesso');
     }
 }

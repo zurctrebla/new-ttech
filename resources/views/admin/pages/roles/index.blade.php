@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nível de Acesso')
+@section('title', 'Níveis de Acessos')
 
 @section('content_header')
     <div class="container-fluid">
@@ -17,7 +17,6 @@
         </div>
     </div>
 @stop
-
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -35,7 +34,6 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Descrição</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -43,16 +41,19 @@
                                     @foreach ($roles as $role)
                                         <tr>
                                             <td>{{ $role->name }}</td>
-                                            <td>{{ $role->description ?? ''}}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
                                                     <a href="{{ route('roles.show', $role->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
+                                                    @can('role-edit')
                                                         <a href="{{ route('roles.edit', $role->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                                    @endcan
+                                                    @can('role-delete')
                                                         <form action="{{ route('roles.destroy', $role->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o usuário ?')" >Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
                                                         </form>
+                                                    @endcan
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
                                                     <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,8 +61,12 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                                         <a href="{{ route('roles.show', $role->uuid) }}" class="dropdown-item">Visualizar</a>
+                                                        @can('role-edit')
                                                             <a href="{{ route('roles.edit', $role->uuid) }}" class="dropdown-item">Editar</a>
-                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar o usuário ?')">Apagar</button>
+                                                        @endcan
+                                                        @can('role-delete')
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                        @endcan
                                                     </div>
                                                 </div>
                                             </td>

@@ -24,7 +24,6 @@ class RoleController extends Controller
     public function index()
     {
         $roles = $this->roleService->getRoles();
-
         return RoleResource::collection($roles);
     }
 
@@ -37,7 +36,6 @@ class RoleController extends Controller
     public function store(StoreUpdateRole $request)
     {
         $role = $this->roleService->createNewRole($request->validated());
-
         return new RoleResource($role);
     }
 
@@ -50,7 +48,6 @@ class RoleController extends Controller
     public function show($identify)
     {
         $role = $this->roleService->getRole($identify);
-
         return new RoleResource($role);
     }
 
@@ -64,7 +61,6 @@ class RoleController extends Controller
     public function update(StoreUpdateRole $request, $identify)
     {
         $this->roleService->updateRole($identify, $request->validated());
-
         return response()->json(['message' => 'updated']);
     }
 
@@ -77,7 +73,6 @@ class RoleController extends Controller
     public function destroy($identify)
     {
         $this->roleService->deleteRole($identify);
-
         return response()->json([], 204);
     }
 }

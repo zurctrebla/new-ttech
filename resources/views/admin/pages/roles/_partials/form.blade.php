@@ -1,7 +1,5 @@
 @include('admin.includes.alerts')
-
 @csrf
-
 <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
