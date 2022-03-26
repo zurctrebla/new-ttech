@@ -24,7 +24,6 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userService->getUsers();
-
         return UserResource::collection($users);
     }
 
@@ -36,9 +35,7 @@ class UserController extends Controller
      */
     public function store(StoreUpdateUser $request)
     {
-
         $user = $this->userService->createNewUser($request->validated());
-
         return new UserResource($user);
     }
 
@@ -51,7 +48,6 @@ class UserController extends Controller
     public function show($identify)
     {
         $user = $this->userService->getUser($identify);
-
         return new UserResource($user);
     }
 
@@ -64,11 +60,8 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUser $request, $identify)
     {
-
         $this->userService->updateUser($identify, $request->validated());
-
         return response()->json(['message' => 'updated']);
-
     }
 
     /**
@@ -80,7 +73,6 @@ class UserController extends Controller
     public function destroy($identify)
     {
         $this->userService->deleteUser($identify);
-
         return response()->json([], 204);
     }
 }
