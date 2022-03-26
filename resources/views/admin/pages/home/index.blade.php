@@ -15,7 +15,7 @@
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Usuários</span>
+                <span class="info-box-text"><a href="{{ route('users.index') }}">Usuários</a></span>
                 <span class="info-box-number">{{ $totalUsers }}</span>
               </div>
               <!-- /.info-box-content -->
@@ -30,7 +30,7 @@
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Localizadores</span>
+                <span class="info-box-text"><a href="{{-- {{ route('locators.index') }} --}}">Localizadores</a></span>
                 <span class="info-box-number">{{-- {{ $totalLocators }} --}}</span>
               </div>
               <!-- /.info-box-content -->
@@ -45,7 +45,7 @@
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Leituras</span>
+                <span class="info-box-text"><a href="{{-- {{ route('readings.index') }} --}}">Leituras</a></span>
                 <span class="info-box-number">{{-- {{ $totalReadings }} --}}</span>
               </div>
               <!-- /.info-box-content -->

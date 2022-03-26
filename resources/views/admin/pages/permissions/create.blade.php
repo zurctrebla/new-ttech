@@ -27,7 +27,6 @@
     </div>
 @stop
 
-
 @section('content')
     <div class="container-fluid">
         <div class="row">
