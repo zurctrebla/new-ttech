@@ -1,10 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\{
+    DeviceController,
+    GameController,
     UserController
 };
-use App\Http\Controllers\Api\ACL\RoleController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ACL\{
+    PermissionController,
+    RoleController
+};
+
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -12,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::apiResource('/users', UserController::class);
-
 Route::apiResource('/roles', RoleController::class);
+Route::apiResource('/permissions', PermissionController::class);
+Route::apiResource('/games', GameController::class);
+Route::apiResource('/devices', DeviceController::class);
+
 
 
 Route::get('/', function () {
