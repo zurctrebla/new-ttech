@@ -242,6 +242,77 @@ return [
             'icon' => 'fas fa-key',
             /* 'can'  => 'roles', */
         ],
+        [
+            'text' => 'Permissões',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-lock',
+            /* 'can'  => 'permissions', */
+        ],
+        [
+            'text' => 'Operação SSA',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-chess-knight',
+            'can'  => '',
+        ],
+        [
+            'text' => 'Manutenção',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-tools',
+            'can'  => '',
+        ],
+        [
+            'text' => 'Estoque',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-warehouse',
+            'can'  => '',
+        ],
+        [
+            'text' => 'Relatório',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-chart-bar',
+            'can'  => '',
+        ],
+        [
+            'text' => 'Jogos',
+            'url'  => 'admin/games',
+            'icon' => 'fas fa-gamepad',
+            /* 'can'  => 'games', */
+        ],
+        [
+            'text' => 'Esps',
+            'url'  => 'admin/devices',
+            'icon' => 'fas fa-microchip',
+            /* 'can'  => 'devices', */
+        ],
+        [
+            'text' => 'Parceiros',
+            'url'  => 'admin/partners',
+            'icon' => 'fas fa-handshake',
+            /* 'can'  => 'partners', */
+        ],
+        [
+            'text' => 'Clientes',
+            'url'  => 'admin/clients',
+            'icon' => 'fas fa-user-alt',
+            /* 'can'  => 'clients', */
+        ],
+        [
+            'text' => 'Localizadores',
+            'url'  => 'admin/locators',
+            'icon' => 'fas fa-location-arrow',
+            /* 'can'  => 'locators', */
+        ],
+        [
+            'text' => 'Leituras',
+            'url'  => 'admin/readings',
+            'icon' => 'fas fa-pen-alt',
+            /* 'can'  => 'readings', */
+        ],
+        [
+            'text' => 'Sair',
+            'url'  => '/logout',
+            'icon' => 'fas fa-sign-out-alt',
+        ],
     ],
 
     /*
