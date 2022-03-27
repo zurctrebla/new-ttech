@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\{
     DeviceController,
     GameController,
+    PartnerController,
     UserController
 };
 use App\Http\Controllers\Api\ACL\{
@@ -21,6 +22,7 @@ Route::apiResource('/roles', RoleController::class);
 Route::apiResource('/permissions', PermissionController::class);
 Route::apiResource('/games', GameController::class);
 Route::apiResource('/devices', DeviceController::class);
+Route::apiResource('/partners', PartnerController::class);
 
 
 

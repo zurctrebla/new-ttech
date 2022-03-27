@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\{
     DashboardController,
     DeviceController,
     GameController,
+    PartnerController,
     UserController
 };
 use App\Http\Controllers\Admin\ACL\PermissionController;
@@ -18,6 +19,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/permissions', PermissionController::class);
     Route::resource('/games', GameController::class);
     Route::resource('/devices', DeviceController::class);
+    Route::resource('/partners', PartnerController::class);
 
 });
 

@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
-use App\Http\Resources\{
-    RoleResource,
-    UserResource
-
+use App\Http\Resources\RoleResource;
+use App\Http\Resources\UserResource;
+use App\Services\{
+    RoleService,
+    UserService
 };
-use App\Services\RoleService;
-use App\Services\UserService;
 
-class UserController extends Controller
+class PartnerController extends Controller
 {
     protected $userService;
 
@@ -52,7 +51,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateUser $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateUser $request)
@@ -64,7 +63,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $identify
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
     public function show($identify)
@@ -77,7 +76,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  string  $identify
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
     public function edit($identify)
@@ -92,8 +91,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $identify
+     * @param  \Illuminate\Http\StoreUpdateUser $request
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
     public function update(StoreUpdateUser $request, $identify)
@@ -105,7 +104,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $identify
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
     public function destroy($identify)
