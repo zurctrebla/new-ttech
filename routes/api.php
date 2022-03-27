@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\{
+    ClientController,
     DeviceController,
     GameController,
     PartnerController,
@@ -23,8 +24,7 @@ Route::apiResource('/permissions', PermissionController::class);
 Route::apiResource('/games', GameController::class);
 Route::apiResource('/devices', DeviceController::class);
 Route::apiResource('/partners', PartnerController::class);
-
-
+Route::apiResource('/clients', ClientController::class);
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);

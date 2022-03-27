@@ -13,7 +13,7 @@ use App\Services\{
     UserService
 };
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     protected $userService;
 

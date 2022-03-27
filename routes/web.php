@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{
+    ClientController,
     DashboardController,
     DeviceController,
     GameController,
@@ -20,6 +21,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/games', GameController::class);
     Route::resource('/devices', DeviceController::class);
     Route::resource('/partners', PartnerController::class);
+    Route::resource('/clients', ClientController::class);
 
 });
 
