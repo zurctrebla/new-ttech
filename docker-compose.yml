@@ -42,6 +42,19 @@ services:
         networks:
             - backend
 
+    # phpmyadmin
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        links:
+            - mysql
+        ports:
+            - 8081:80
+        environment:
+            - PMA_ARBITRARY=1
+        networks:
+            - backend
+
 networks:
     backend:
         driver: bridge
