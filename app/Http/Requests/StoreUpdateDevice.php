@@ -30,7 +30,7 @@ class StoreUpdateDevice extends FormRequest
         ];
 
         if ($this->method() == 'PUT') {
-            $rules['name'] = ['nullable', 'min:3', 'max:255'];
+            $rules['mac'] = ['nullable', 'min:3', 'max:255'];
         }
 
         return $rules;
