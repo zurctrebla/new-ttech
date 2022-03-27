@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\{
     DashboardController,
     DeviceController,
     GameController,
+    LocatorController,
     PartnerController,
     UserController
 };
@@ -22,6 +23,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/devices', DeviceController::class);
     Route::resource('/partners', PartnerController::class);
     Route::resource('/clients', ClientController::class);
+    Route::resource('/partners', PartnerController::class); 
+    Route::resource('/locators', LocatorController::class);
 
 });
 

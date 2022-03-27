@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\{
     ClientController,
     DeviceController,
     GameController,
+    LocatorController,
     PartnerController,
     UserController
 };
@@ -25,6 +26,7 @@ Route::apiResource('/games', GameController::class);
 Route::apiResource('/devices', DeviceController::class);
 Route::apiResource('/partners', PartnerController::class);
 Route::apiResource('/clients', ClientController::class);
+Route::apiResource('/locators', LocatorController::class);
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);
