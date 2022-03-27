@@ -47,6 +47,7 @@ class GameController extends Controller
     public function store(StoreUpdateGame $request)
     {
         $game = $this->gameService->createNewGame($request->validated());
+        $game = new GameResource($game);
         return redirect()->route('games.index')->with('message', 'Jogo criado com sucesso');
     }
 
