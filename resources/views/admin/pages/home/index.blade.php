@@ -30,8 +30,8 @@
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text"><a href="{{-- {{ route('locators.index') }} --}}">Localizadores</a></span>
-                <span class="info-box-number">{{-- {{ $totalLocators }} --}}</span>
+                <span class="info-box-text"><a href="{{ route('locators.index') }}">Localizadores</a></span>
+                <span class="info-box-number">{{ $totalLocators }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
