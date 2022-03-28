@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\{
     PartnerController,
     ProductController,
     ReadingController,
+    ReportController,
     UserController
 };
 use App\Http\Controllers\Api\ACL\{
@@ -35,6 +36,7 @@ Route::apiResource('/inventories', InventoryController::class);
 Route::apiResource('/products', ProductController::class);
 Route::resource('/readings', ReadingController::class);
 Route::resource('/orders', OrderController::class);
+Route::resource('/reports', ReportController::class);
 
 
 Route::get('/', function () {

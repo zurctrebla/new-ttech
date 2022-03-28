@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Estoque')
+@section('title', 'Pedidos')
 
 @section('content_header')
     <div class="container-fluid">
@@ -11,57 +11,72 @@
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <a href="{{ route('inventories.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
+                <a href="{{ route('orders.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
             </ol>
             </div>
         </div>
     </div>
 @stop
-
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <form action="{{-- {{ route('inventories.search') }} --}}" method="POST" class="form form-inline">
+                        <form action="{{-- {{ route('orders.search') }} --}}" method="POST" class="form form-inline">
                             @csrf
                             <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{-- {{ $filters['filter'] ?? '' }} --}}">
                             <button type="submit" class="btn btn-dark">Filtrar</button>
                         </form>
                     </div>
                         <div class="card-body">
-                            <table id="inventories" class="table table-bordered table-striped">
+                            <table id="orders" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Produto</th>
+                                        <th>Solicitante</th>
+                                        <th>Tipo</th>
                                         <th>Quantidade</th>
+                                        <th>Observação</th>
+                                        <th>Status</th>
+                                        <th>Data da Entrega</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($inventories as $inventory)
+                                    @foreach ($orders as $order)
                                         <tr>
-                                            <td>{{ $inventory->product }}</td>
-                                            <td>{{ $inventory->amount }}</td>
+                                            <td>{{ $order->user->name}}</td>
+                                            <td>{{ $order->type }}</td>
+                                            <td>{{ $order->amount }}</td>
+                                            <td>{{ $order->description }}</td>
+                                            <td>{{ $order->status }}</td>
+                                            <td>{{ $order->delivery }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
-                                                    <a href="{{ route('inventories.show', $inventory->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
-                                                        <a href="{{ route('inventories.edit', $inventory->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                                        <form action="{{ route('inventories.destroy', $inventory->uuid) }}" style="display:inline" method="POST">
+                                                    <a href="{{ route('orders.show', $order->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
+                                                    @can('order-edit')
+                                                        <a href="{{ route('orders.edit', $order->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                                    @endcan
+                                                    @can('order-delete')
+                                                        <form action="{{ route('orders.destroy', $order->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o jogo ?')" >Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
                                                         </form>
+                                                    @endcan
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
                                                     <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Ações
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                                                        <a href="{{ route('inventories.show', $inventory->uuid) }}" class="dropdown-item">Visualizar</a>
-                                                        <a href="{{ route('inventories.edit', $inventory->uuid) }}" class="dropdown-item">Editar</a>
-                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o jogo ?')">Apagar</button>
+                                                        <a href="{{ route('orders.show', $order->uuid) }}" class="dropdown-item">Visualizar</a>
+                                                        @can('order-edit')
+                                                            <a href="{{ route('orders.edit', $order->uuid) }}" class="dropdown-item">Editar</a>
+                                                        @endcan
+                                                        @can('order-delete')
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                        @endcan
                                                     </div>
                                                 </div>
                                             </td>
@@ -72,9 +87,9 @@
                         </div>
                         <div class="card-footer">
                             {{-- @if (isset($filters))
-                                {!! $games->appends($filters)->links() !!}
+                                {!! $orders->appends($filters)->links() !!}
                             @else
-                                {!! $games->links() !!}
+                                {!! $orders->links() !!}
                             @endif --}}
                         </div>
                 </div>

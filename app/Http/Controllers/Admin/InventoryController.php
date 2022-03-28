@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Inventory;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateInventory;
+use App\Http\Resources\InventoryResource;
+use App\Services\InventoryService;
 
 class InventoryController extends Controller
 {
-    protected $inventory;
+    protected $inventoryService;
 
-    public function __construct(Inventory $inventory)
+    public function __construct(InventoryService $inventoryService)
     {
-        $this->inventory = $inventory;
+        $this->inventoryService = $inventoryService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +23,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventories = $this->inventory->paginate();
-
+        $inventories = $this->inventoryService->getinventories();
+        $inventories = InventoryResource::collection($inventories);
         return view('admin.pages.inventories.index', compact('inventories'));
     }
 
@@ -33,18 +35,20 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.inventories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateInventory $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateInventory $request)
     {
-        //
+        $inventory = $this->inventoryService->createNewInventory($request->validated());
+        $inventory = new InventoryResource($inventory);
+        return redirect()->route('inventories.index')->with('message', 'Produto criado com sucesso');
     }
 
     /**
@@ -72,11 +76,11 @@ class InventoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateInventory $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateInventory $request, $id)
     {
         //
     }

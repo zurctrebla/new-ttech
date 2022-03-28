@@ -5,18 +5,24 @@ namespace App\Providers;
 use App\Models\{
     Device,
     Game,
+    Inventory,
     Locator,
+    Order,
     Permission,
     Reading,
+    Report,
     Role,
     User
 };
 use App\Observers\{
     DeviceObserver,
     GameObserver,
+    InventoryObserver,
     LocatorObserver,
+    OrderObserver,
     PermissionObserver,
     ReadingObserver,
+    ReportObserver,
     RoleObserver,
     UserObserver
 };
@@ -48,5 +54,8 @@ class AppServiceProvider extends ServiceProvider
         Device::observe(DeviceObserver::class);
         Locator::observe(LocatorObserver::class);
         Reading::observe(ReadingObserver::class);
+        Inventory::observe(InventoryObserver::class);
+        Order::observe(OrderObserver::class);
+        Report::observe(ReportObserver::class);
     }
 }

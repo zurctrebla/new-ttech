@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\{
     PartnerController,
     ProductController,
     ReadingController,
+    ReportController,
     UserController
 };
 use App\Http\Controllers\Admin\ACL\PermissionController;
@@ -33,6 +34,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/products', ProductController::class);
     Route::resource('/readings', ReadingController::class);
     Route::resource('/orders', OrderController::class);
+    Route::resource('/reports', ReportController::class);
 
 
 });

@@ -254,11 +254,17 @@ return [
                 ],
             ],
         ],
-
         [
             'text' => 'Pedidos',
             'url'  => 'admin/orders',
             'icon' => 'fas fa-clipboard',
+            'can'  => 'orders',
+        ],
+        [
+            'text' => 'Laudos',
+            'url'  => 'admin/reports',
+            'icon' => 'fas fa-tasks',
+            'can'  => 'reports',
         ],
         [
             'text'    => 'Manutenção',
