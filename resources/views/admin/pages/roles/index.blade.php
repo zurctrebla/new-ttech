@@ -34,6 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
+                                        <th>Descrição</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
@@ -41,6 +42,7 @@
                                     @foreach ($roles as $role)
                                         <tr>
                                             <td>{{ $role->name }}</td>
+                                            <td>{{ $role->description }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
                                                     <a href="{{ route('roles.show', $role->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
