@@ -45,8 +45,8 @@
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text"><a href="{{-- {{ route('readings.index') }} --}}">Leituras</a></span>
-                <span class="info-box-number">{{-- {{ $totalReadings }} --}}</span>
+                <span class="info-box-text"><a href="{{ route('readings.index') }}">Leituras</a></span>
+                <span class="info-box-number">{{ $totalReadings }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
