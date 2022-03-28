@@ -52,4 +52,12 @@ class Locator extends Model
         return $this->belongsTo(Device::class);
     }
 
+    /**
+     * Get Readings
+     */
+    public function readings()
+    {
+        return $this->hasMany(Reading::class);
+    }
+
 }
