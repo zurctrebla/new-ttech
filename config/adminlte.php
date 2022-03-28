@@ -237,76 +237,101 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'Níveis de Acesso',
-            'url'  => 'admin/roles',
-            'icon' => 'fas fa-key',
-            /* 'can'  => 'roles', */
+            'text'    => 'Configurações',
+            'icon'    => 'fas fa-cogs',
+            'submenu' => [
+                [
+                    'text' => 'Níveis de Acesso',
+                    'url'  => 'admin/roles',
+                    'icon' => 'fas fa-key',
+                    'can'  => 'roles',
+                ],
+                [
+                    'text' => 'Permissões',
+                    'url'  => 'admin/permissions',
+                    'icon' => 'fas fa-lock',
+                    'can'  => 'permissions',
+                ],
+            ],
         ],
         [
-            'text' => 'Permissões',
-            'url'  => 'admin/permissions',
-            'icon' => 'fas fa-lock',
-            /* 'can'  => 'permissions', */
-        ],
-        [
-            'text' => 'Operação SSA',
-            'url'  => 'admin/products',
-            'icon' => 'fas fa-chess-knight',
-            'can'  => '',
-        ],
-        [
-            'text' => 'Manutenção',
-            'url'  => 'admin/products',
-            'icon' => 'fas fa-tools',
-            'can'  => '',
-        ],
-        [
-            'text' => 'Estoque',
-            'url'  => 'admin/inventories',
-            'icon' => 'fas fa-warehouse',
-            'can'  => '',
-        ],
-        [
-            'text' => 'Relatório',
-            'url'  => 'admin/permissions',
-            'icon' => 'fas fa-chart-bar',
-            'can'  => '',
+            'text'    => 'Manutenção',
+            'icon'    => 'fas fa-tools',
+            'submenu' => [
+                [
+                    'text' => 'Operação SSA',
+                    'url'  => 'admin/products',
+                    'icon' => 'fas fa-chess-knight',
+                    'can'  => 'products-index',
+                ],
+                [
+                    'text' => 'Manutenção',
+                    'url'  => 'admin/products',
+                    'icon' => 'fas fa-tools',
+                    'can'  => 'products-index',
+                ],
+                [
+                    'text' => 'Estoque',
+                    'url'  => 'admin/inventories',
+                    'icon' => 'fas fa-warehouse',
+                    'can'  => 'inventory-index',
+                ],
+                [
+                    'text' => 'Relatório',
+                    'url'  => 'admin/inventories',
+                    'icon' => 'fas fa-chart-bar',
+                    'can'  => 'inventory-index',
+                ],
+            ],
         ],
         [
             'text' => 'Jogos',
             'url'  => 'admin/games',
             'icon' => 'fas fa-gamepad',
-            /* 'can'  => 'games', */
+            'can'  => 'games',
         ],
         [
             'text' => 'Esps',
             'url'  => 'admin/devices',
             'icon' => 'fas fa-microchip',
-            /* 'can'  => 'devices', */
+            'can'  => 'devices',
         ],
         [
             'text' => 'Parceiros',
             'url'  => 'admin/partners',
             'icon' => 'fas fa-handshake',
-            /* 'can'  => 'partners', */
+            'can'  => 'partners',
         ],
         [
             'text' => 'Clientes',
             'url'  => 'admin/clients',
             'icon' => 'fas fa-user-alt',
-            /* 'can'  => 'clients', */
+            'can'  => 'clients',
         ],
         [
             'text' => 'Localizadores',
             'url'  => 'admin/locators',
             'icon' => 'fas fa-location-arrow',
-            /* 'can'  => 'locators', */
+            'can'  => 'locators',
         ],
         [
-            'text' => 'Leituras',
-            'url'  => 'admin/readings',
-            'icon' => 'fas fa-pen-alt',
-            /* 'can'  => 'readings', */
+            'text'    => 'Leituras',
+            'icon'    => 'fas fa-pen-alt',
+            'can'     => 'reading',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar Leituras',
+                    'url'  => 'admin/readings/create',
+                    'icon' => 'fas fa-pen-alt',
+                    'can'  => 'readings-create',
+                ],
+                [
+                    'text' => 'Relatório de Leituras',
+                    'url'  => 'admin/readings',
+                    'icon' => 'fas fa-chalkboard-teacher',
+                    'can'  => 'readings-index',
+                ],
+            ],
         ],
         [
             'text' => 'Sair',
