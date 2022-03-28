@@ -254,6 +254,12 @@ return [
                 ],
             ],
         ],
+
+        [
+            'text' => 'Pedidos',
+            'url'  => 'admin/orders',
+            'icon' => 'fas fa-clipboard',
+        ],
         [
             'text'    => 'Manutenção',
             'icon'    => 'fas fa-tools',

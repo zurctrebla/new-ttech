@@ -53,15 +53,15 @@
             <!-- /.info-box -->
         </div>
 
-        <div hidden class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
               <span class="info-box-icon bg-aqua">
-                  <i class="fas fa-hamburger"></i>
+                  <i class="fas fa-clipboard"></i>
                 </span>
 
               <div class="info-box-content">
-                <span class="info-box-text"></span>
-                <span class="info-box-number">{{-- {{ $totalProducts }} --}}</span>
+                <span class="info-box-text"><a href="{{ route('orders.index') }}">Pedidos</a></span>
+                <span class="info-box-number">{{ $totalOrders }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

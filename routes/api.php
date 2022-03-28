@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\{
     GameController,
     InventoryController,
     LocatorController,
+    OrderController,
     PartnerController,
     ProductController,
     ReadingController,
@@ -33,6 +34,8 @@ Route::apiResource('/locators', LocatorController::class);
 Route::apiResource('/inventories', InventoryController::class);
 Route::apiResource('/products', ProductController::class);
 Route::resource('/readings', ReadingController::class);
+Route::resource('/orders', OrderController::class);
+
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);

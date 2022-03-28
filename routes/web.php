@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\{
     GameController,
     InventoryController,
     LocatorController,
+    OrderController,
     PartnerController,
     ProductController,
     ReadingController,
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/inventories', InventoryController::class);
     Route::resource('/products', ProductController::class);
     Route::resource('/readings', ReadingController::class);
+    Route::resource('/orders', OrderController::class);
 
 
 });
