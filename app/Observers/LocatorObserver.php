@@ -15,6 +15,7 @@ class LocatorObserver
      */
     public function creating(Locator $locator)
     {
+        $locator->user_id = Auth()->user()->id;
         $locator->uuid = Str::uuid();
         $locator->status = 'Ativo';
     }

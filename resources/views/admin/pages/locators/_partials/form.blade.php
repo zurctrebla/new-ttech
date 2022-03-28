@@ -31,10 +31,10 @@
     <div class="col-sm-3">
         <div class="form-group">
          <label>Cliente *</label>
-         <select name="client_id" class="form-control">
+         <select name="client" class="form-control">
             <option value="">Escolha</option>
                 @foreach($clients as $client)
-                    <option value="{{ $client->id }}" {{-- @if(isset($userclient) && $client->name == $userclient) selected @endif --}}>
+                    <option value="{{ $client->uuid }}" {{-- @if(isset($userclient) && $client->name == $userclient) selected @endif --}}>
                         {{ $client->name }}
                     </option>
                 @endforeach
@@ -44,10 +44,10 @@
     <div class="col-sm-3">
         <div class="form-group">
          <label>Jogo *</label>
-         <select name="game_id" class="form-control">
+         <select name="game" class="form-control">
             <option value="">Escolha</option>
                 @foreach($games as $game)
-                    <option value="{{ $game->id }}" {{-- @if(isset($usergame) && $game->name == $usergame) selected @endif --}}>
+                    <option value="{{ $game->uuid }}" {{-- @if(isset($usergame) && $game->name == $usergame) selected @endif --}}>
                         {{ $game->name }}
                     </option>
                 @endforeach

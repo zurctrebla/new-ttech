@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LocatorResource extends JsonResource
@@ -15,5 +16,14 @@ class LocatorResource extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
+        // return [
+        //     'locator' => $this->locator,
+        //     'serial' => $this->serial,
+        //     'serial' => $this->serial,
+        //     'serial' => $this->serial,
+        //     'serial' => $this->serial,
+        //     'serial' => $this->serial,
+        //     'created_at' => Carbon::make($this->created_at)->format('d/m/Y'),
+        // ];
     }
 }

@@ -26,12 +26,18 @@ class StoreUpdateLocator extends FormRequest
         $uuid = $this->locator ?? '';
 
         $rules = [
+            'partner' => ['required', 'string'],
+            'game' => ['required', 'string'],
+            'client' => ['nullable', 'string'],
             'locator' => ['required', 'string', 'min:3', 'max:255', "unique:locators,locator,{$uuid},uuid"],
             'serial' => ['nullable', 'string', 'min:3', 'max:255'],
             'status' => ['nullable', 'string', 'min:3', 'max:255'],
         ];
 
         if ($this->method() == 'PUT') {
+            $rules['partner'] = ['nullable', 'string'];
+            $rules['game'] = ['nullable', 'string'];
+            $rules['client'] = ['nullable', 'string'];
             $rules['locator'] = ['nullable', 'min:3', 'max:255'];
             $rules['serial'] = ['nullable', 'min:3', 'max:255'];
             $rules['status'] = ['nullable', 'min:3', 'max:255'];

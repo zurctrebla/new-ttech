@@ -10,7 +10,7 @@ class Locator extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['partner_id','game_id', 'device_id', 'locator', 'serial'];
+    protected $fillable = ['user_id', 'partner_id', 'game_id', 'client_id', 'device_id', 'locator', 'serial'];
 
     /**
      * Get Game
@@ -21,9 +21,25 @@ class Locator extends Model
     }
 
     /**
+     * Get Client
+     */
+    public function client()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Get Partner
      */
     public function partner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get User
+     */
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\{
+    ClientRepository,
+    GameRepository,
     LocatorRepository,
     PartnerRepository
 };
@@ -12,10 +14,14 @@ class LocatorService
     protected $locatorRepository;
 
     public function __construct(
+        ClientRepository $clientRepository,
+        GameRepository $gameRepository,
         LocatorRepository $locatorRepository,
         PartnerRepository $partnerRepository
         )
     {
+        $this->clientRepository = $clientRepository;
+        $this->gameRepository = $gameRepository;
         $this->locatorRepository = $locatorRepository;
         $this->partnerRepository = $partnerRepository;
     }
@@ -27,12 +33,13 @@ class LocatorService
 
     public function createNewLocator(array $data)
     {
-        dd($data);
+        $client = $this->clientRepository->getClientByUuid($data['client']);
+        $game = $this->gameRepository->getGameByUuid($data['game']);
         $partner = $this->partnerRepository->getPartnerByUuid($data['partner']);
-
-        dd($data['partner']);
-
-        return $this->locatorRepository->createNewLocator($partner->id, $data);
+        $data['client_id'] = $client->id;
+        $data['game_id'] = $game->id;
+        $data['partner_id'] = $partner->id;
+        return $this->locatorRepository->createNewLocator($data);
     }
 
     public function getLocator(string $identify)

@@ -55,16 +55,32 @@
                 <div class="inputs view content">
                     <table>
                         <tr>
-                            <th><?= __('Nome') ?></th>
-                            <td>{{ $locator->name }}</td>
+                            <th><?= __('Localizador') ?></th>
+                            <td>{{ $locator->locator }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('E-mail') ?></th>
-                            <td>{{ $locator->email }}</td>
+                            <th><?= __('Serial') ?></th>
+                            <td>{{ $locator->serial }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('Nível de Acesso') ?></th>
-                            <td>{{ $locator->role->name }}</td>
+                            <th><?= __('Parceiro') ?></th>
+                            <td>{{ $locator->partner->name }}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Cliente') ?></th>
+                            <td>{{ $locator->client->name ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Jogo') ?></th>
+                            <td>{{ $locator->game->name}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Cadastrador por:') ?></th>
+                            <td>{{ $locator->user->name ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Data do Cadastro') ?></th>
+                            <td>{{ $locator->created_at ?? ''}}</td>
                         </tr>
                     </table>
                 </div>
