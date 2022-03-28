@@ -49,7 +49,7 @@
                                             <td>{{ $locator->serial }}</td>
                                             <td>{{ $locator->game->name }}</td>
                                             <td>{{ $locator->partner->name }}</td>
-                                            <td>{{ $locator->client->name ?? ''}}</td>
+                                            <td>{{ $locator->client->name }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
                                                     <a href="{{ route('locators.show', $locator->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
