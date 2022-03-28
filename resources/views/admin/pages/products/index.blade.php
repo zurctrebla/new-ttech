@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <a href="{{ route('games.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
+                <a href="{{ route('products.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
             </ol>
             </div>
         </div>
@@ -24,14 +24,14 @@
             <div class="col-md-12">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <form action="{{-- {{ route('games.search') }} --}}" method="POST" class="form form-inline">
+                        <form action="{{-- {{ route('products.search') }} --}}" method="POST" class="form form-inline">
                             @csrf
                             <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{-- {{ $filters['filter'] ?? '' }} --}}">
                             <button type="submit" class="btn btn-dark">Filtrar</button>
                         </form>
                     </div>
                         <div class="card-body">
-                            <table id="games" class="table table-bordered table-striped">
+                            <table id="products" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
@@ -39,14 +39,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($games as $game)
+                                    @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $game->name }}</td>
+                                            <td>{{ $product->name }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
-                                                    <a href="{{ route('games.show', $game->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
-                                                        <a href="{{ route('games.edit', $game->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
-                                                        <form action="{{ route('games.destroy', $game->uuid) }}" style="display:inline" method="POST">
+                                                    <a href="{{ route('products.show', $product->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
+                                                        <a href="{{ route('products.edit', $product->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                                        <form action="{{ route('products.destroy', $product->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o jogo ?')" >Apagar</button>
@@ -57,8 +57,8 @@
                                                         Ações
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                                                        <a href="{{ route('games.show', $game->uuid) }}" class="dropdown-item">Visualizar</a>
-                                                        <a href="{{ route('games.edit', $game->uuid) }}" class="dropdown-item">Editar</a>
+                                                        <a href="{{ route('products.show', $product->uuid) }}" class="dropdown-item">Visualizar</a>
+                                                        <a href="{{ route('products.edit', $product->uuid) }}" class="dropdown-item">Editar</a>
                                                         <button class="dropdown-item" onclick="return confirm('Deseja apagar o jogo ?')">Apagar</button>
                                                     </div>
                                                 </div>
@@ -70,9 +70,9 @@
                         </div>
                         <div class="card-footer">
                             {{-- @if (isset($filters))
-                                {!! $games->appends($filters)->links() !!}
+                                {!! $products->appends($filters)->links() !!}
                             @else
-                                {!! $games->links() !!}
+                                {!! $products->links() !!}
                             @endif --}}
                         </div>
                 </div>
