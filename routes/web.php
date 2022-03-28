@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\{
     DashboardController,
     DeviceController,
     GameController,
+    InventoryController,
     LocatorController,
     PartnerController,
+    ProductController,
     UserController
 };
 use App\Http\Controllers\Admin\ACL\PermissionController;
@@ -23,8 +25,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/devices', DeviceController::class);
     Route::resource('/partners', PartnerController::class);
     Route::resource('/clients', ClientController::class);
-    Route::resource('/partners', PartnerController::class); 
+    Route::resource('/partners', PartnerController::class);
     Route::resource('/locators', LocatorController::class);
+    Route::resource('/inventories', InventoryController::class);
+    Route::resource('/products', ProductController::class);
 
 });
 

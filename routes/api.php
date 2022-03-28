@@ -4,8 +4,10 @@ use App\Http\Controllers\Api\{
     ClientController,
     DeviceController,
     GameController,
+    InventoryController,
     LocatorController,
     PartnerController,
+    ProductController,
     UserController
 };
 use App\Http\Controllers\Api\ACL\{
@@ -27,6 +29,8 @@ Route::apiResource('/devices', DeviceController::class);
 Route::apiResource('/partners', PartnerController::class);
 Route::apiResource('/clients', ClientController::class);
 Route::apiResource('/locators', LocatorController::class);
+Route::apiResource('/inventories', InventoryController::class);
+Route::apiResource('/products', ProductController::class);
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);
