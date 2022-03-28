@@ -8,12 +8,14 @@ use App\Http\Resources\{
     DeviceResource,
     GameResource,
     LocatorResource,
+    PartnerResource,
     UserResource
 };
 use App\Services\{
     DeviceService,
     GameService,
     LocatorService,
+    PartnerService,
     UserService
 };
 
@@ -25,6 +27,7 @@ class LocatorController extends Controller
         DeviceService $deviceService,
         GameService $gameService,
         LocatorService $locatorService,
+        PartnerService $partnerService,
         UserService $userService
         )
     {
@@ -32,6 +35,7 @@ class LocatorController extends Controller
         $this->gameService = $gameService;
         $this->locatorService = $locatorService;
         $this->userService = $userService;
+        $this->partnerService = $partnerService;
     }
 
     /**
@@ -53,8 +57,8 @@ class LocatorController extends Controller
      */
     public function create()
     {
-        $partners = $this->userService->getUsers();
-        $partners = UserResource::collection($partners);
+        $partners = $this->partnerService->getPartners();
+        $partners = PartnerResource::collection($partners);
         $clients = $this->userService->getUsers();
         $clients = UserResource::collection($clients);
         $games = $this->gameService->getGames();
@@ -78,6 +82,7 @@ class LocatorController extends Controller
     public function store(StoreUpdateLocator $request)
     {
         $locator = $this->locatorService->createNewLocator($request->validated());
+        dd($locator);
         $locator = new LocatorResource($locator);
         return redirect()->route('locators.index')->with('message', 'Localizador criado com sucesso');
     }

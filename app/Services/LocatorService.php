@@ -2,15 +2,22 @@
 
 namespace App\Services;
 
-use App\Repositories\LocatorRepository;
+use App\Repositories\{
+    LocatorRepository,
+    PartnerRepository
+};
 
 class LocatorService
 {
     protected $locatorRepository;
 
-    public function __construct(LocatorRepository $locatorRepository)
+    public function __construct(
+        LocatorRepository $locatorRepository,
+        PartnerRepository $partnerRepository
+        )
     {
         $this->locatorRepository = $locatorRepository;
+        $this->partnerRepository = $partnerRepository;
     }
 
     public function getLocators()
@@ -20,8 +27,12 @@ class LocatorService
 
     public function createNewLocator(array $data)
     {
-        // dd($data);
-        return $this->locatorRepository->createNewLocator($data);
+        dd($data);
+        $partner = $this->partnerRepository->getPartnerByUuid($data['partner']);
+
+        dd($data['partner']);
+
+        return $this->locatorRepository->createNewLocator($partner->id, $data);
     }
 
     public function getLocator(string $identify)

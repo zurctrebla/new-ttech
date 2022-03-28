@@ -18,10 +18,10 @@
     <div class="col-sm-3">
         <div class="form-group">
          <label>Parceiro *</label>
-         <select name="partner_id" class="form-control">
+         <select name="partner" class="form-control">
             <option value="">Escolha</option>
                 @foreach($partners as $partner)
-                    <option value="{{ $partner->id }}" @if(isset($userpartner) && $partner->name == $userpartner) selected @endif>
+                    <option value="{{ $partner->uuid }}" {{-- @if(isset($userpartner) && $partner->name == $userpartner) selected @endif --}}>
                         {{ $partner->name }}
                     </option>
                 @endforeach
@@ -34,7 +34,7 @@
          <select name="client_id" class="form-control">
             <option value="">Escolha</option>
                 @foreach($clients as $client)
-                    <option value="{{ $client->id }}" @if(isset($userclient) && $client->name == $userclient) selected @endif>
+                    <option value="{{ $client->id }}" {{-- @if(isset($userclient) && $client->name == $userclient) selected @endif --}}>
                         {{ $client->name }}
                     </option>
                 @endforeach
@@ -47,7 +47,7 @@
          <select name="game_id" class="form-control">
             <option value="">Escolha</option>
                 @foreach($games as $game)
-                    <option value="{{ $game->id }}" @if(isset($usergame) && $game->name == $usergame) selected @endif>
+                    <option value="{{ $game->id }}" {{-- @if(isset($usergame) && $game->name == $usergame) selected @endif --}}>
                         {{ $game->name }}
                     </option>
                 @endforeach
@@ -60,7 +60,7 @@
          <select name="device_id" class="form-control">
             <option value="">Escolha</option>
                 @foreach($devices as $device)
-                    <option value="{{ $device->id }}" @if(isset($userdevice) && $device->mac == $userdevice) selected @endif>
+                    <option value="{{ $device->id }}" {{-- @if(isset($userdevice) && $device->mac == $userdevice) selected @endif --}}>
                         {{ $device->mac }}
                     </option>
                 @endforeach
