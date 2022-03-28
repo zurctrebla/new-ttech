@@ -250,19 +250,19 @@ return [
         ],
         [
             'text' => 'Operação SSA',
-            'url'  => 'admin/permissions',
+            'url'  => 'admin/products',
             'icon' => 'fas fa-chess-knight',
             'can'  => '',
         ],
         [
             'text' => 'Manutenção',
-            'url'  => 'admin/permissions',
+            'url'  => 'admin/products',
             'icon' => 'fas fa-tools',
             'can'  => '',
         ],
         [
             'text' => 'Estoque',
-            'url'  => 'admin/permissions',
+            'url'  => 'admin/inventories',
             'icon' => 'fas fa-warehouse',
             'can'  => '',
         ],
