@@ -7,6 +7,7 @@ use App\Models\{
     Game,
     Locator,
     Permission,
+    Reading,
     Role,
     User
 };
@@ -15,6 +16,7 @@ use App\Observers\{
     GameObserver,
     LocatorObserver,
     PermissionObserver,
+    ReadingObserver,
     RoleObserver,
     UserObserver
 };
@@ -45,5 +47,6 @@ class AppServiceProvider extends ServiceProvider
         Game::observe(GameObserver::class);
         Device::observe(DeviceObserver::class);
         Locator::observe(LocatorObserver::class);
+        Reading::observe(ReadingObserver::class);
     }
 }
