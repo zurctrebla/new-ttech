@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\{
     LocatorController,
     PartnerController,
     ProductController,
+    ReadingController,
     UserController
 };
 use App\Http\Controllers\Admin\ACL\PermissionController;
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/locators', LocatorController::class);
     Route::resource('/inventories', InventoryController::class);
     Route::resource('/products', ProductController::class);
+    Route::resource('/readings', ReadingController::class);
+
 
 });
 

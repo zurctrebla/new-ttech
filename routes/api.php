@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\{
     LocatorController,
     PartnerController,
     ProductController,
+    ReadingController,
     UserController
 };
 use App\Http\Controllers\Api\ACL\{
@@ -31,6 +32,7 @@ Route::apiResource('/clients', ClientController::class);
 Route::apiResource('/locators', LocatorController::class);
 Route::apiResource('/inventories', InventoryController::class);
 Route::apiResource('/products', ProductController::class);
+Route::resource('/readings', ReadingController::class);
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);
