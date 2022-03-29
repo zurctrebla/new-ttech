@@ -51,7 +51,7 @@
                                                         <form action="{{ route('inventories.destroy', $inventory->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o jogo ?')" >Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o estoque ?')" >Apagar</button>
                                                         </form>
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
@@ -61,7 +61,7 @@
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                                         <a href="{{ route('inventories.show', $inventory->uuid) }}" class="dropdown-item">Visualizar</a>
                                                         <a href="{{ route('inventories.edit', $inventory->uuid) }}" class="dropdown-item">Editar</a>
-                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o jogo ?')">Apagar</button>
+                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o estoque ?')">Apagar</button>
                                                     </div>
                                                 </div>
                                             </td>

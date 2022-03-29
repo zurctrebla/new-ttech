@@ -19,7 +19,7 @@
                         <form action="{{ route('games.destroy', $game->uuid) }}" style="display:inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão ?')" >Apagar</button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o estoque ?')" >Apagar</button>
                         </form>
                     @endcan
                 </span>
@@ -33,7 +33,7 @@
                             <a href="{{ route('games.edit', $game->uuid) }}" class="dropdown-item">Editar</a>
                         @endcan
                         @can('game-delete')
-                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão ?')">Apagar</button>
+                            <button class="dropdown-item" onclick="return confirm('Deseja apagar o estoque ?')">Apagar</button>
                         @endcan
                     </div>
                 </div>
