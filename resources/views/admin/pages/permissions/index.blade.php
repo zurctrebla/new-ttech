@@ -53,7 +53,7 @@
                                                         <form action="{{ route('permissions.destroy', $permission->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão ?')">Apagar</button>
                                                         </form>
                                                     @endcan
                                                 </span>
@@ -67,7 +67,7 @@
                                                             <a href="{{ route('permissions.edit', $permission->uuid) }}" class="dropdown-item">Editar</a>
                                                         @endcan
                                                         @can('permission-delete')
-                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão ?')">Apagar</button>
                                                         @endcan
                                                     </div>
                                                 </div>
