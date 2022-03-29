@@ -19,7 +19,7 @@
                     <form action="{{ route('devices.destroy', $device->uuid) }}" style="display:inline" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o usuário ?')" >Apagar</button>
+                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o dispositivo ?')" >Apagar</button>
                     </form>
                 @endcan
             </span>
@@ -33,7 +33,7 @@
                         <a href="{{ route('devices.edit', $device->uuid) }}" class="dropdown-item">Editar</a>
                     @endcan
                     @can('device-delete')
-                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o usuário ?')">Apagar</button>
+                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o dispositivo ?')">Apagar</button>
                     @endcan
                 </div>
             </div>
