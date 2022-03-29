@@ -61,7 +61,7 @@
                                                         <form action="{{ route('orders.destroy', $order->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o pedido ?')">Apagar</button>
                                                         </form>
                                                     @endcan
                                                 </span>
@@ -75,7 +75,7 @@
                                                             <a href="{{ route('orders.edit', $order->uuid) }}" class="dropdown-item">Editar</a>
                                                         @endcan
                                                         @can('order-delete')
-                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar o pedido ?')">Apagar</button>
                                                         @endcan
                                                     </div>
                                                 </div>
