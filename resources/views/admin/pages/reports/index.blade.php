@@ -65,7 +65,7 @@
                                                         <form action="{{ route('reports.destroy', $report->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o laudo ?')">Apagar</button>
                                                         </form>
                                                     @endcan
                                                 </span>
@@ -79,7 +79,7 @@
                                                             <a href="{{ route('reports.edit', $report->uuid) }}" class="dropdown-item">Editar</a>
                                                         @endcan
                                                         @can('report-delete')
-                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar o laudo ?')">Apagar</button>
                                                         @endcan
                                                     </div>
                                                 </div>
