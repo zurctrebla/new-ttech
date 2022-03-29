@@ -340,7 +340,7 @@ return [
                 [
                     'text' => 'Relatório de Leituras',
                     'url'  => 'admin/readings',
-                    'icon' => 'fas fa-chalkboard-teacher',
+                    'icon' => 'fas fa-tasks',
                     'can'  => 'readings-index',
                 ],
             ],
