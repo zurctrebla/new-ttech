@@ -49,7 +49,7 @@
                                                         <form action="{{ route('products.destroy', $product->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o jogo ?')" >Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o produto ?')" >Apagar</button>
                                                         </form>
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
@@ -59,7 +59,7 @@
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                                         <a href="{{ route('products.show', $product->uuid) }}" class="dropdown-item">Visualizar</a>
                                                         <a href="{{ route('products.edit', $product->uuid) }}" class="dropdown-item">Editar</a>
-                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o jogo ?')">Apagar</button>
+                                                        <button class="dropdown-item" onclick="return confirm('Deseja apagar o produto ?')">Apagar</button>
                                                     </div>
                                                 </div>
                                             </td>
