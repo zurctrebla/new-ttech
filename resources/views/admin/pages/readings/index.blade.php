@@ -33,6 +33,7 @@
                             <table id="readings" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th>Parceiro</th>
                                         <th>Localizador</th>
                                         <th>Entrada</th>
                                         <th>Saída</th>
@@ -44,6 +45,7 @@
                                 <tbody>
                                     @foreach ($readings as $reading)
                                         <tr>
+                                            <td>{{ $reading->locator->partner->name }}</td>
                                             <td>{{ $reading->locator->locator }}</td>
                                             <td>{{ $reading->input }}</td>
                                             <td>{{ $reading->output }}</td>
@@ -59,7 +61,7 @@
                                                         <form action="{{ route('readings.destroy', $reading->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a leitura ?')">Apagar</button>
                                                         </form>
                                                     @endcan
                                                 </span>
@@ -73,7 +75,7 @@
                                                             <a href="{{ route('readings.edit', $reading->uuid) }}" class="dropdown-item">Editar</a>
                                                         @endcan
                                                         @can('reading-delete')
-                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button class="dropdown-item" onclick="return confirm('Deseja apagar a leitura ?')">Apagar</button>
                                                         @endcan
                                                     </div>
                                                 </div>
