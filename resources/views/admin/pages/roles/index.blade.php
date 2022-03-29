@@ -53,7 +53,7 @@
                                                         <form action="{{ route('roles.destroy', $role->uuid) }}" style="display:inline" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o nível de acesso ?')">Apagar</button>
                                                         </form>
                                                     @endcan
                                                 </span>
