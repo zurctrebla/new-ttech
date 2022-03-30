@@ -79,7 +79,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\StoreUpdateProduct $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProduct $request)
     {
         if ($request->hasFile('file') && $request->file->isValid()) {
             $name = $request->file->getClientOriginalName();

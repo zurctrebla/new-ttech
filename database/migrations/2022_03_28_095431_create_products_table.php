@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->uuid('uuid');
-            $table->string('equipment');
+            $table->foreignId('inventory_id')->constrained('inventories')->onDelete('cascade');
             $table->string('serial')->nullable();
             $table->string('tag')->unique();
             $table->string('model')->nullable();

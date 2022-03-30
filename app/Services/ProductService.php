@@ -2,14 +2,21 @@
 
 namespace App\Services;
 
-use App\Repositories\ProductRepository;
+use App\Repositories\{
+    InventoryRepository,
+    ProductRepository
+};
 
 class ProductService
 {
-    protected $repository;
+    protected $inventoryRepository, $productRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(
+        InventoryRepository $inventoryRepository,
+        ProductRepository $productRepository
+        )
     {
+        $this->inventoryRepository = $inventoryRepository;
         $this->productRepository = $productRepository;
     }
 
@@ -20,6 +27,8 @@ class ProductService
 
     public function createNewProduct(array $data)
     {
+        $inventory = $this->inventoryRepository->getInventoryByUuid($data['inventory']);
+        $data['inventory_id'] = $inventory->id;
         return $this->productRepository->createNewProduct($data);
     }
 

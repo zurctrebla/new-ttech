@@ -4,28 +4,24 @@
     <div class="col-sm-12">
       <div class="form-group">
        <label>Equipamento *</label>
-        <select name="equipment" class="form-control" required>
+        <select name="inventory" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($inventories as $inventory)
-                    <option value="{{ $inventory->equipment }}" @if(isset($userinventory) && $inventory->name == $userinventory) selected @endif>
-                        {{ $inventory->equipment }}
+                    <option value="{{ $inventory->uuid }}" @if(isset($userinventory) && $inventory->name == $userinventory) selected @endif>
+                        {{ $inventory->equipment }} {{ $inventory->model }}
                     </option>
                 @endforeach
         </select>
       </div>
     </div>
 </div>
-<div class="row">
+<div hidden class="row">
     <div class="col-sm-12">
       <div class="form-group">
        <label>Modelo *</label>
         <select name="model" class="form-control">
             <option value="">Escolha</option>
-                {{-- @foreach($roles as $role)
-                    <option value="{{ $role->id }}" @if(isset($userRole) && $role->name == $userRole) selected @endif>
-                        {{ $role->name }}
-                    </option>
-                @endforeach --}}
+
         </select>
       </div>
     </div>

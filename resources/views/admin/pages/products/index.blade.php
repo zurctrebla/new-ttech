@@ -44,7 +44,7 @@
                                 <tbody>
                                     @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $product->equipment }}</td>
+                                            <td>{{ $product->inventory->equipment }}</td>
                                             <td>{{ $product->tag }}</td>
                                             <td>{{ $product->user->name }}</td>
                                             <td>{{ $product->created_at }}</td>

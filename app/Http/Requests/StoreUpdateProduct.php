@@ -26,7 +26,7 @@ class StoreUpdateProduct extends FormRequest
         $uuid = $this->product ?? '';
 
         $rules = [
-            'equipment' => ['required', 'string', 'min:3', 'max:255'],
+            'inventory' => ['required', 'string', 'min:3', 'max:255'],
             'serial' => ['nullable', 'string', 'min:3', 'max:255'],
             // 'tag' => ['unique', 'string', 'min:3', 'max:255'],
             'inicial' => ['required', 'regex:/^\d+$/', "unique:products,tag,{$uuid},uuid"],
