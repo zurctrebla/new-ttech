@@ -20,6 +20,29 @@ class ProductRepository
 
     public function createNewProduct(array $data)
     {
+        if ($data['inicial'] === $data['final'])    // apenas uma etiqueta, testado, ok
+            $data['tag'] = $data['inicial'];
+                                                    // remove do estoque
+                                                    // aqui ou no observer
+
+
+        if ($data['inicial'] != $data['final']) {   // múltiplas etiquetas
+
+            $data['tag'] = [];
+
+            for ($i=$data['inicial']; $i <= $data['final']; $i++) {
+
+                $data['tag'] = $i;
+
+                if ($this->entity->create($data)) {
+                                                        // remove do estoque
+                                                        // aqui ou no observer
+                }
+            }
+
+            return ;
+        }
+
         return $this->entity->create($data);
     }
 
