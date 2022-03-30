@@ -4,10 +4,13 @@
     <div class="col-sm-6">
         <div class="form-group">
          <label>Equipamento *</label>
-         <select name="equipment" class="form-control" required>
-            <option value="">Escolha</option>{{--
-            <option value="Montagem" @if(isset($order) && $order->type == 'Montagem') selected @endif >Montagem</option>
-            <option value="Venda" @if(isset($order) && $order->type == 'Venda') selected @endif>Venda</option> --}}
+         <select name="inventory" class="form-control">
+            <option value="">Escolha</option>
+                @foreach($inventories as $inventory)
+                    <option value="{{ $inventory->id }}" @if(isset($userinventory) && $inventory->name == $userinventory) selected @endif>
+                        {{ $inventory->equipment }}
+                    </option>
+                @endforeach
          </select>
         </div>
     </div>

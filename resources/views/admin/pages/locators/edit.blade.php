@@ -11,12 +11,12 @@
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <span class="d-none d-md-block">
-                    <a href="{{ route('users.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
-                    @can('user-show')
-                        <a href="{{ route('users.show', $user->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
+                    <a href="{{ route('locators.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
+                    @can('locator-show')
+                        <a href="{{ route('locators.show', $locator->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
                     @endcan
-                    @can('user-delete')
-                        <form action="{{ route('users.destroy', $user->uuid) }}" style="display:inline" method="POST">
+                    @can('locator-delete')
+                        <form action="{{ route('locators.destroy', $locator->uuid) }}" style="display:inline" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o localizador ?')" >Apagar</button>
@@ -28,11 +28,11 @@
                         Ações
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                        <a href="{{ route('users.show', $user->uuid) }}" class="btn btn-outline-info btn-sm">Listar</a>
-                        @can('user-edit')
-                            <a href="{{ route('users.edit', $user->uuid) }}" class="dropdown-item">Editar</a>
+                        <a href="{{ route('locators.show', $locator->uuid) }}" class="btn btn-outline-info btn-sm">Listar</a>
+                        @can('locator-edit')
+                            <a href="{{ route('locators.edit', $locator->uuid) }}" class="dropdown-item">Editar</a>
                         @endcan
-                        @can('user-delete')
+                        @can('locator-delete')
                             <button class="dropdown-item" onclick="return confirm('Deseja apagar o localizador ?')">Apagar</button>
                         @endcan
                     </div>
@@ -52,10 +52,10 @@
                 <h3 class="card-title">Editar Usuário</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('users.update', $user->uuid) }}" class="form" method="POST">
+                <form action="{{ route('locators.update', $locator->uuid) }}" class="form" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('admin.pages.users._partials.form')
+                    @include('admin.pages.locators._partials.form')
                 </form>
             </div>
             </div>

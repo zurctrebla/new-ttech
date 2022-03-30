@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nível de Acesso')
+@section('title', 'Pedido')
 
 @section('content_header')
 <div class="container-fluid">
@@ -11,12 +11,12 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <span class="d-none d-md-block">
-                <a href="{{ route('roles.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
-                @can('role-edit')
-                    <a href="{{ route('roles.edit', $role->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
+                <a href="{{ route('orders.index') }}" class="btn btn-outline-info btn-sm">Listar</a>
+                @can('order-edit')
+                    <a href="{{ route('orders.edit', $order->uuid) }}" class="btn btn-outline-warning btn-sm">Editar</a>
                 @endcan
-                @can('role-delete')
-                    <form action="{{ route('roles.destroy', $role->uuid) }}" style="display:inline" method="POST">
+                @can('order-delete')
+                    <form action="{{ route('orders.destroy', $order->uuid) }}" style="display:inline" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o pedido ?')" >Apagar</button>
@@ -28,11 +28,11 @@
                     Ações
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
-                    <a href="{{ route('roles.show', $role->uuid) }}" class="btn btn-outline-info btn-sm">Listar</a>
-                    @can('role-edit')
-                        <a href="{{ route('roles.edit', $role->uuid) }}" class="dropdown-item">Editar</a>
+                    <a href="{{ route('orders.show', $order->uuid) }}" class="btn btn-outline-info btn-sm">Listar</a>
+                    @can('order-edit')
+                        <a href="{{ route('orders.edit', $order->uuid) }}" class="dropdown-item">Editar</a>
                     @endcan
-                    @can('role-delete')
+                    @can('order-delete')
                         <button class="dropdown-item" onclick="return confirm('Deseja apagar o pedido ?')">Apagar</button>
                     @endcan
                 </div>
@@ -55,12 +55,36 @@
                 <div class="inputs view content">
                     <table>
                         <tr>
-                            <th><?= __('Nome') ?></th>
-                            <td>{{ $role->name }}</td>
+                            <th><?= __('Solicitante') ?></th>
+                            <td>{{ $order->user->name }}</td>
                         </tr>
                         <tr>
-                            <th><?= __('Descrição') ?></th>
-                            <td>{{ $role->description ?? ''}}</td>
+                            <th><?= __('Pedido / Lote') ?></th>
+                            <td>{{ $order->number ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Tipo') ?></th>
+                            <td>{{ $order->type ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Quantidade') ?></th>
+                            <td>{{ $order->amount ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Observação') ?></th>
+                            <td>{{ $order->description ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Status') ?></th>
+                            <td>{{ $order->status ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Data da Solicitação') ?></th>
+                            <td>{{ $order->created_at ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Data da Entrega') ?></th>
+                            <td>{{ $order->delivery ?? ''}}</td>
                         </tr>
                     </table>
                 </div>
