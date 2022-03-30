@@ -109,7 +109,21 @@ class LocatorController extends Controller
     {
         $locator = $this->locatorService->getLocator($identify);
         $locator = new LocatorResource($locator);
-        return view('admin.pages.locators.edit', compact('locator'));
+        $partners = $this->partnerService->getPartners();
+        $partners = PartnerResource::collection($partners);
+        $clients = $this->userService->getUsers();
+        $clients = UserResource::collection($clients);
+        $games = $this->gameService->getGames();
+        $games = GameResource::collection($games);
+        $devices = $this->deviceService->getDevices();
+        $devices = DeviceResource::collection($devices);
+        return view('admin.pages.locators.edit', compact(
+            'clients',
+            'devices',
+            'games',
+            'locator',
+            'partners'
+        ));
     }
 
     /**
