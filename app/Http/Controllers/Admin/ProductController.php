@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateProduct;
-use App\Http\Resources\ProductResource;
-use App\Services\ProductService;
+use App\Http\Resources\{
+    InventoryResource,
+    ProductResource
+};
+use App\Services\{
+    InventoryService,
+    ProductService
+};
+use DOMDocument;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     protected $productService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(
+        InventoryService $inventoryService,
+        ProductService $productService)
     {
+        $this->inventoryService = $inventoryService;
         $this->productService = $productService;
     }
 
@@ -34,9 +45,32 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function opssa()
+    {
+        return view('admin.pages.products.opssa');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('admin.pages.products.create');
+        // return view('admin.pages.products.create');
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function maintenance()
+    {
+        $inventories = $this->inventoryService->getInventories();
+        $inventories = InventoryResource::collection($inventories);
+        return view('admin.pages.products.maintenance', compact('inventories'));
     }
 
     /**
@@ -45,9 +79,19 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\StoreUpdateProduct $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateProduct $request)
+    public function store(Request $request)
     {
-        //
+        if ($request->hasFile('file') && $request->file->isValid()) {
+            $name = $request->file->getClientOriginalName();
+            $data['file'] = $request->file->storeAs('files', $name); //upload file
+
+            return redirect()->route('products.opssa')->with('message', 'Lançamento de planilha realizado com sucesso');
+        }
+
+        $product = $this->productService->createNewProduct($request->validated());
+        $product = new ProductResource($product);
+
+        return redirect()->route('products.maintenance')->with('message', 'Lançamento realizado com sucesso');
     }
 
     /**
