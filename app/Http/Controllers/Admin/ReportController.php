@@ -3,16 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ReportResource;
-use App\Services\ReportService;
+use App\Http\Resources\{
+    InventoryResource,
+    ProductResource,
+    ReportResource
+};
+use App\Services\{
+    InventoryService,
+    ProductService,
+    ReportService
+};
+
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    protected $reportService;
+    protected $reportService, $inventoryService;
 
-    public function __construct(ReportService $reportService)
+    public function __construct(
+        InventoryService $inventoryService,
+        ReportService $reportService
+        )
     {
+        $this->inventoryService = $inventoryService;
         $this->reportService = $reportService;
     }
 
@@ -35,7 +48,9 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.reports.create');
+        $inventories = $this->inventoryService->getInventories();
+        $inventories = InventoryResource::collection($inventories);
+        return view('admin.pages.reports.create', compact('inventories'));
     }
 
     /**
