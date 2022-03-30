@@ -17,13 +17,14 @@ class CreateInventoriesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->uuid('uuid');
-            $table->string('product')->unique();
-            $table->string('description')->nullable();
+            $table->string('equipment');
             $table->string('brand')->nullable();
             $table->string('model');
+            $table->string('condition');
             $table->integer('amount');
-            $table->string('tag');
-            $table->string('status');
+            $table->enum('status', ['Ativo', 'Inativo']);
+            $table->enum('export', ['Y', 'N'])/* ->default('Y') */;
+            $table->double('price', 10, 2)->nullable();
             $table->timestamps();
         });
     }

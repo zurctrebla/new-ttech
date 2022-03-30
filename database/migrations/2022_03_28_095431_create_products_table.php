@@ -20,9 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('equipment');
             $table->string('serial')->nullable();
             $table->string('tag')->unique();
-            $table->string('model')->unique();
+            $table->string('model')->nullable();
             $table->string('destiny')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
+            //$table->enum('status', ['Ativo', 'Inativo']);
             $table->timestamps();
         });
     }
