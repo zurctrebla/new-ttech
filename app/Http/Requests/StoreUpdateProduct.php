@@ -13,7 +13,7 @@ class StoreUpdateProduct extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,42 @@ class StoreUpdateProduct extends FormRequest
      */
     public function rules()
     {
+        $uuid = $this->product ?? '';
+
+        $rules = [
+            'equipment' => ['required', 'string', 'min:3', 'max:255'],
+            'serial' => ['nullable', 'string', 'min:3', 'max:255'],
+            // 'tag' => ['unique', 'string', 'min:3', 'max:255'],
+            'inicial' => ['required', 'regex:/^\d+$/', "unique:products,tag,{$uuid},uuid"],
+            'final' => ['required', 'regex:/^\d+$/', "unique:products,tag,{$uuid},uuid"],
+            'model' => ['nullable', 'string', 'min:3', 'max:255'],
+            'destiny' => ['nullable', 'string', 'min:3', 'max:255'],
+            // 'inicial' => ['nullable', 'regex:/^\d+$/'],
+            // 'final' => ['nullable', 'regex:/^\d+$/'],
+        ];
+
+        if ($this->method() == 'PUT') {
+
+            $rules['equipment'] = ['nullable', 'min:3', 'max:255'];
+            $rules['serial'] = ['nullable', 'min:3', 'max:255'];
+            $rules['tag'] = ['nullable', 'min:3', 'max:255'];
+            $rules['model'] = ['nullable', 'min:3', 'max:255'];
+            $rules['destiny'] = ['nullable', 'min:3', 'max:255'];
+            $rules['inicial'] = ['nullable', 'regex:/^\d+$/'];
+            $rules['final'] = ['nullable', 'regex:/^\d+$/'];
+        }
+
+        return $rules;
+    }
+
+    public function messages()
+    {
         return [
-            //
+            'min' => 'Campo deve ter no mínimo 3 caracteres',
+            'max' => 'Campo deve ter no máximo 255 caracteres',
+            'unique' => 'O número da etiqueta já está cadastrado',
+            'required' => 'O campo etiqueta é obrigatório',
         ];
     }
+
 }
