@@ -7,6 +7,7 @@ use App\Models\{
     Locator,
     Order,
     Reading,
+    Report,
     User
 };
 
@@ -18,12 +19,14 @@ class DashboardController extends Controller
         $totalLocators = Locator::/* where('tenant_id', $tenant->id)-> */count();
         $totalReadings = Reading::/* where('tenant_id', $tenant->id)-> */count();
         $totalOrders = Order::where('status', 'Aberto')->count();
+        $totalReports = Report::where('status', 'Aberto')->count();
 
         return view('admin.pages.home.index', compact(
             'totalUsers',
             'totalLocators',
             'totalReadings',
-            'totalOrders'
+            'totalOrders',
+            'totalReports'
         ));
     }
 }
