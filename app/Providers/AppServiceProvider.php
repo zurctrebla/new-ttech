@@ -9,6 +9,7 @@ use App\Models\{
     Locator,
     Order,
     Permission,
+    Product,
     Reading,
     Report,
     Role,
@@ -21,6 +22,7 @@ use App\Observers\{
     LocatorObserver,
     OrderObserver,
     PermissionObserver,
+    ProductObserver,
     ReadingObserver,
     ReportObserver,
     RoleObserver,
@@ -57,5 +59,6 @@ class AppServiceProvider extends ServiceProvider
         Inventory::observe(InventoryObserver::class);
         Order::observe(OrderObserver::class);
         Report::observe(ReportObserver::class);
+        Product::observe(ProductObserver::class);
     }
 }
