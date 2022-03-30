@@ -31,17 +31,23 @@
                         </form>
                     </div>
                         <div class="card-body">
-                            <table id="products" class="table table-bordered table-striped">
+                            <table id="products" class="table table-sm table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
+                                        <th>Etiqueta</th>
+                                        <th>Técnico</th>
+                                        <th>Data</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->equipment }}</td>
+                                            <td>{{ $product->tag }}</td>
+                                            <td>{{ $product->user->name }}</td>
+                                            <td>{{ $product->created_at }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">
                                                     <a href="{{ route('products.show', $product->uuid) }}" class="btn btn-outline-primary btn-sm">Visualizar</a>
