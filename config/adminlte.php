@@ -272,13 +272,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Operação SSA',
-                    'url'  => 'admin/products',
+                    'url'  => 'admin/products/opssa',
                     'icon' => 'fas fa-chess-knight',
                     'can'  => 'products-index',
                 ],
                 [
                     'text' => 'Manutenção',
-                    'url'  => 'admin/products',
+                    'url'  => 'admin/products/maintenance',
                     'icon' => 'fas fa-tools',
                     'can'  => 'products-index',
                 ],
