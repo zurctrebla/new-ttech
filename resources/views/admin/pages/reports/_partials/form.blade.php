@@ -1,20 +1,20 @@
 @include('admin.includes.alerts')
 @csrf
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="form-group">
          <label>Equipamento *</label>
-         <select name="inventory" class="form-control">
-            <option value="">Escolha</option>
-                @foreach($inventories as $inventory)
-                    <option value="{{ $inventory->id }}" @if(isset($userinventory) && $inventory->name == $userinventory) selected @endif>
-                        {{ $inventory->equipment }}
-                    </option>
-                @endforeach
-         </select>
+            <select name="inventory" class="form-control" required>
+                <option value="">Escolha</option>
+                    @foreach($inventories as $inventory)
+                        <option value="{{ $inventory->uuid }}" @if(isset($userinventory) && $inventory->name == $userinventory) selected @endif>
+                            {{ $inventory->equipment }} {{ $inventory->model }}
+                        </option>
+                    @endforeach
+            </select>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div hidden class="col-sm-6">
         <div class="form-group">
             <label>Modelo *</label>
             <select name="model" class="form-control" required>
