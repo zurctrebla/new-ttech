@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateInventory;
 use App\Http\Resources\InventoryResource;
 use App\Services\InventoryService;
+use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
@@ -48,7 +49,7 @@ class InventoryController extends Controller
     {
         $inventory = $this->inventoryService->createNewInventory($request->validated());
         $inventory = new InventoryResource($inventory);
-        return redirect()->route('inventories.index')->with('message', 'Produto criado com sucesso');
+        return redirect()->route('inventories.index')->with('message', 'Equipamento criado com sucesso');
     }
 
     /**

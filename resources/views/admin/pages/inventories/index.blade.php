@@ -7,11 +7,11 @@
         @include('admin.includes.alerts')
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h3>Listar</h3>
+            <h3>Estoque Atual</h3>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <a href="{{ route('inventories.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
+            <a href="{{ route('inventories.create') }}" class="btn btn-outline-success btn-sm">Cadastrar</a>
             </ol>
             </div>
         </div>
@@ -34,7 +34,7 @@
                             <table id="inventories" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Produto</th>
+                                        <th>Equipamento</th>
                                         <th>Quantidade</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
@@ -42,7 +42,12 @@
                                 <tbody>
                                     @foreach ($inventories as $inventory)
                                         <tr>
-                                            <td>{{ $inventory->product }}</td>
+                                            <td>
+                                                {{ $inventory->equipment }}
+                                                {{ $inventory->brand ?? ''}}
+                                                {{ $inventory->model ?? ''}}
+                                                {{ $inventory->condition }}
+                                            </td>
                                             <td>{{ $inventory->amount }}</td>
                                             <td class="text-center">
                                                 <span class="d-none d-md-block">

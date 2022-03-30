@@ -18,6 +18,11 @@ class InventoryObserver
         $inventory->user_id = Auth()->user()->id;
         $inventory->uuid = Str::uuid();
         $inventory->status = 'Ativo';
+
+        if ($inventory->export == "on") {
+            $inventory->export = "Y";
+        }
+
     }
 
     /**

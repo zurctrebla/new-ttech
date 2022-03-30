@@ -23,28 +23,26 @@ class StoreUpdateInventory extends FormRequest
      */
     public function rules()
     {
-        // $uuid = $this->inventory ?? '';
-
         $rules = [
-        // 'partner' => ['required', 'string'/* , 'min:3', 'max:255', "unique:readings,name,{$uuid},uuid" */],
-        'product' => ['required', 'string'],
-        'description' => ['required', 'string'],
-        'brand' => ['required', 'string'],
+        'equipment' => ['required', 'string'],
+        'brand' => ['nullable', 'string'],
         'model' => ['required', 'string'],
-        'tag' => ['required', 'string'],
+        'condition' => ['required', 'string'],
         'amount' => ['required', 'regex:/^\d+$/'],
+        'export' => ['nullable', 'string'],
     ];
 
     if ($this->method() == 'PUT') {
 
-        $rules['product'] = ['nullable', 'string'];
-        $rules['description'] = ['string'];
+        $rules['equipment'] = ['nullable', 'string'];
         $rules['brand'] = ['string'];
         $rules['model'] = ['string'];
-        $rules['tag'] = ['string'];
+        $rules['condition'] = ['string'];
         $rules['amount'] = ['nullable', 'regex:/^\d+$/'];
+        $rules['export'] = ['nullable', 'string'];
     }
 
     return $rules;
+
     }
 }
