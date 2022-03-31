@@ -15,7 +15,7 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $roles = [
-            'User'
+            'usuario'
         ];
 
         // Role::create([
