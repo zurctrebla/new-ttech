@@ -235,8 +235,21 @@ return [
             'text' => 'Usuários',
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-users',
+            'can'  => 'users',
         ],
         [
+            'text' => 'Níveis de Acesso',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-key',
+            'can'  => 'roles',
+        ],
+        [
+            'text' => 'Permissões',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-lock',
+            'can'  => 'permissions',
+        ],
+        /* [
             'text'    => 'Configurações',
             'icon'    => 'fas fa-cogs',
             'submenu' => [
@@ -253,7 +266,7 @@ return [
                     'can'  => 'permissions',
                 ],
             ],
-        ],
+        ], */
         [
             'text' => 'Pedidos',
             'url'  => 'admin/orders',
@@ -266,7 +279,7 @@ return [
             'icon' => 'fas fa-tasks',
             'can'  => 'reports',
         ],
-        [
+        /* [
             'text'    => 'Manutenção',
             'icon'    => 'fas fa-tools',
             'submenu' => [
@@ -295,6 +308,30 @@ return [
                     'can'  => 'inventory-index',
                 ],
             ],
+        ], */
+        [
+            'text' => 'Operação SSA',
+            'url'  => 'admin/products/opssa',
+            'icon' => 'fas fa-chess-knight',
+            'can'  => 'products-index',
+        ],
+        [
+            'text' => 'Manutenção',
+            'url'  => 'admin/products/maintenance',
+            'icon' => 'fas fa-tools',
+            'can'  => 'products-index',
+        ],
+        [
+            'text' => 'Estoque',
+            'url'  => 'admin/inventories',
+            'icon' => 'fas fa-warehouse',
+            'can'  => 'inventory-index',
+        ],
+        [
+            'text' => 'Relatório',
+            'url'  => 'admin/inventories',
+            'icon' => 'fas fa-chart-bar',
+            'can'  => 'inventory-index',
         ],
         [
             'text' => 'Jogos',
