@@ -21,6 +21,9 @@ class ProductObserver
             $product->status = 'Finalizado';
         }
 
+        $product->inventory->amount--;  // atualiza estoque
+        $product->inventory->update();  // salva dados
+
     }
 
     /**

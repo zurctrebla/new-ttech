@@ -22,9 +22,6 @@ class ProductRepository
     {
         if ($data['inicial'] === $data['final'])    // apenas uma etiqueta, testado, ok
             $data['tag'] = $data['inicial'];
-                                                    // remove do estoque
-                                                    // aqui ou no observer
-
 
         if ($data['inicial'] != $data['final']) {   // múltiplas etiquetas
 
@@ -33,11 +30,7 @@ class ProductRepository
             for ($i=$data['inicial']; $i <= $data['final']; $i++) {
 
                 $data['tag'] = $i;
-
-                if ($this->entity->create($data)) {
-                                                        // remove do estoque
-                                                        // aqui ou no observer
-                }
+                $this->entity->create($data);
             }
 
             return ;
