@@ -23,7 +23,7 @@
     </div>
     <div class="col-sm-6">
         <div class="form-group">
-         <label>Função *</label>
+         <label>Nível de Acesso *</label>
          <select name="role_id" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($roles as $role)
