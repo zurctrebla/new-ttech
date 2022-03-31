@@ -56,7 +56,7 @@
                     <table>
 
                         <tr>
-                            <th><?= __('Nome') ?></th>
+                            <th><?= __('Equipamento') ?></th>
                             <td>
                                 {{ $inventory->equipment }}
                                 {{ $inventory->brand }}
@@ -85,12 +85,15 @@
                         <tr>
                             <th><?= __('Histórico') ?></th>
                             <td>
-                                @foreach ($inventory->inventory_logs as $historic)
+                                @foreach ($inventory->logs as $log)
 
-                                    {{ $historic->after }}
+                                    Estoque Anterior: <strong>{{ $log->after ?? ''}}</strong>
+                                    Estoque Atual: <strong>{{ $log->before ?? ''}}</strong>
+                                    Criado por: <strong>{{$log->user->name ?? ''}}</strong>
+                                    Criado em: <strong>{{ $log->created_at ?? ''}}</strong>
+                                    <br>
 
                                 @endforeach
-                                {{-- {{ $inventory->historic->after }} --}}
                             </td>
                         </tr>
 
