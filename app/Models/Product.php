@@ -19,8 +19,9 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     /**
-     * Get User
+     * Get Inventory
      */
     public function inventory()
     {
