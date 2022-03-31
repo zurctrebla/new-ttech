@@ -19,7 +19,7 @@ class CreateInventoriesTable extends Migration
             $table->uuid('uuid');
             $table->string('equipment');
             $table->string('brand')->nullable();
-            $table->string('model');
+            $table->string('model')->unique();
             $table->string('condition');
             $table->integer('amount');
             $table->enum('status', ['Ativo', 'Inativo']);
