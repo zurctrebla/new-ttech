@@ -55,21 +55,23 @@ class InventoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($identify)
     {
-        //
+        $inventory = $this->inventoryService->getInventory($identify);
+        $inventory = new InventoryResource($inventory);
+        return view('admin.pages.inventories.show', compact('inventory'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($identify)
     {
         //
     }
@@ -78,10 +80,10 @@ class InventoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\StoreUpdateInventory $request
-     * @param  int  $id
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateInventory $request, $id)
+    public function update(StoreUpdateInventory $request, $identify)
     {
         //
     }
@@ -89,10 +91,10 @@ class InventoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string $identify
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identify)
     {
         //
     }
