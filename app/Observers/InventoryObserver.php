@@ -26,14 +26,19 @@ class InventoryObserver
     }
 
     /**
-     * Handle the Inventory "updated" event.
+     * Handle the Inventory "updating" event.
      *
      * @param  \App\Models\Inventory  $inventory
      * @return void
      */
-    public function updated(Inventory $inventory)
+    public function updating(Inventory $inventory)
     {
-        //
+        // dd($inventory->logs);
+        // $inventory->logs->create();
+        // $inventory->log->user_id = Auth()->user()->id;             //   usuário logado
+        // $product->inventory->log->amount = $product->inventory->amount;   //  registra estoque anterior
+        // $product->inventory->log->amount = $product->inventory->amount;   //  registra estoque anterior
+        // $inventory->logs->create();                                  // salva log
     }
 
     /**

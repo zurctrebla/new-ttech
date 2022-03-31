@@ -11,4 +11,20 @@ class Inventory extends Model
 
     protected $fillable = ['user_id', 'equipment', 'brand', 'model', 'condition', 'amount', 'status'];
 
+    /**
+     * Get User
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get Logs
+     */
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+
 }
