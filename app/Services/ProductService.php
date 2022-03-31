@@ -29,6 +29,13 @@ class ProductService
     {
         $inventory = $this->inventoryRepository->getInventoryByUuid($data['inventory']);
         $data['inventory_id'] = $inventory->id;
+
+        if ($inventory->amount < ($data['final'] - $data['inicial']))
+            return redirect()->route('products.maintenance')->with('error', 'Estoque menor que a quantidade a ser lançada');
+
+        if ($inventory->amount <= 50)
+            return redirect()->route('products.maintenance')->with('error', 'Estoque menor que a 50 unidades');
+
         return $this->productRepository->createNewProduct($data);
     }
 
