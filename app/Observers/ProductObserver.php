@@ -21,8 +21,15 @@ class ProductObserver
             $product->status = 'Finalizado';
         }
 
-        $product->inventory->amount--;  // atualiza estoque
-        $product->inventory->update();  // salva dados
+        // $product->inventory->amount--;
+        // $product->inventory->update();  // salva dados
+
+        $product->inventory->logs->user_id = Auth()->user()->id;
+        $product->inventory->logs->after = $product->inventory->amount;
+        $product->inventory->amount--;                                      // atualiza estoque
+        $product->inventory->logs->before = $product->inventory->amount;
+        $product->inventory->update();                                      // salva dados
+        // $product->inventory->logs->create();
 
     }
 
@@ -38,14 +45,15 @@ class ProductObserver
     }
 
     /**
-     * Handle the Product "deleted" event.
+     * Handle the Product "deleting" event.
      *
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function deleted(Product $product)
+    public function deleting(Product $product)
     {
-        //
+        $product->inventory->amount++;  // atualiza estoque
+        $product->inventory->update();  // salva dados
     }
 
     /**
