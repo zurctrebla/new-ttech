@@ -26,6 +26,7 @@ class StoreUpdateUser extends FormRequest
         $uuid = $this->user ?? '';
 
         $rules = [
+            'role_id' => ['required', 'integer',],
             'name' => ['required', 'string', 'min:3', 'max:100'],
             'password' => ['required', 'min:8', 'max:16'],
             'email' => ['required', 'email', 'max:255', "unique:users,email,{$uuid},uuid"],

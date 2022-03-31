@@ -87,7 +87,8 @@ class UserController extends Controller
         $user = new UserResource($user);
         $roles = $this->roleService->getRoles();
         $roles =  RoleResource::collection($roles);
-        return view('admin.pages.users.edit', compact('user', 'roles'));
+        $userRole = $user->role->name;
+        return view('admin.pages.users.edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -99,6 +100,7 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUser $request, $identify)
     {
+        // dd($request->validated());
         $this->userService->updateUser($identify, $request->validated());
         return redirect()->route('users.index')->with('message', 'Usuário editado com sucesso');
     }
