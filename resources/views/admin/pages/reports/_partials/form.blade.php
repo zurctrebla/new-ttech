@@ -39,12 +39,15 @@
     <div class="col-sm-6">
         <div class="form-group">
          <label>Identificador *</label>
-         <input type="text" name="tag" class="form-control" placeholder="Identificador / Etiqueta:" value="{{ $report->tag ?? old('tag') }}">
+         <input type="text" name="tag" class="form-control" placeholder="Identificador / Etiqueta:" value="{{ $report->tag ?? old('tag') }}" required>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
+        <p>
+            <span class="text-danger">* </span>Campo obrigatório
+        </p>
       <div class="form-group">
         <button type="submit" class="btn btn-dark">Enviar</button>
       </div>

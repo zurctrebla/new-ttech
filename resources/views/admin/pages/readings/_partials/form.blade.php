@@ -4,7 +4,7 @@
     <div class="col-sm-6">
         <div class="form-group">
          <label>Parceiro *</label>
-         <select name="partner" class="form-control">
+         <select name="partner" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($partners as $partner)
                     <option value="{{ $partner->uuid }}" @if(isset($userpartner) && $partner->name == $userpartner) selected @endif>
@@ -17,7 +17,7 @@
     <div class="col-sm-6">
         <div class="form-group">
          <label>Localizador *</label>
-         <select name="locator" class="form-control">
+         <select name="locator" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($locators as $locator)
                     <option value="{{ $locator->uuid }}" @if(isset($userlocator) && $locator->name == $userlocator) selected @endif>
@@ -32,18 +32,21 @@
     <div class="col-sm-6">
       <div class="form-group">
        <label>Entrada *</label>
-       <input type="text" name="input" class="form-control" placeholder="Input:" value="{{ $reading->input ?? old('input') }}" >
+       <input type="text" name="input" class="form-control" placeholder="Input:" value="{{ $reading->input ?? old('input') }}" required>
       </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
          <label>Saída *</label>
-         <input type="text" name="output" class="form-control" placeholder="Output:" value="{{ $reading->output ?? old('output') }}" >
+         <input type="text" name="output" class="form-control" placeholder="Output:" value="{{ $reading->output ?? old('output') }}" required>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
+        <p>
+            <span class="text-danger">* </span>Campo obrigatório
+        </p>
       <div class="form-group">
         <button type="submit" class="btn btn-dark">Enviar</button>
       </div>

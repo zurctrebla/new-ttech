@@ -30,7 +30,7 @@
     <div class="col-sm-12">
       <div class="form-group">
        <label>Etiqueta Inicial *</label>
-       <input type="text" name="inicial" class="form-control" placeholder="Etiqueta Inicial:" value="{{ $game->name ?? old('name') }}" >
+       <input type="text" name="inicial" class="form-control" placeholder="Etiqueta Inicial:" value="{{ $game->name ?? old('name') }}" required>
       </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
     <div class="col-sm-12">
       <div class="form-group">
        <label>Etiqueta Final *</label>
-       <input type="text" name="final" class="form-control" placeholder="Etiqueta Final:" value="{{ $game->name ?? old('name') }}" >
+       <input type="text" name="final" class="form-control" placeholder="Etiqueta Final:" value="{{ $game->name ?? old('name') }}" required>
       </div>
     </div>
 </div>

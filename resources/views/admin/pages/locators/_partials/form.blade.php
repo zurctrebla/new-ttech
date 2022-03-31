@@ -18,10 +18,10 @@
     <div class="col-sm-3">
         <div class="form-group">
          <label>Parceiro *</label>
-         <select name="partner" class="form-control">
+         <select name="partner" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($partners as $partner)
-                    <option value="{{ $partner->uuid }}" {{-- @if(isset($userpartner) && $partner->name == $userpartner) selected @endif --}}>
+                    <option value="{{ $partner->uuid }}" @if(isset($PartnerName) && $partner->name == $PartnerName) selected @endif>
                         {{ $partner->name }}
                     </option>
                 @endforeach
@@ -30,7 +30,7 @@
     </div>
     <div class="col-sm-3">
         <div class="form-group">
-         <label>Cliente *</label>
+         <label>Cliente </label>
          <select name="client" class="form-control">
             <option value="">Escolha</option>
                 @foreach($clients as $client)
@@ -44,7 +44,7 @@
     <div class="col-sm-3">
         <div class="form-group">
          <label>Jogo *</label>
-         <select name="game" class="form-control">
+         <select name="game" class="form-control" required>
             <option value="">Escolha</option>
                 @foreach($games as $game)
                     <option value="{{ $game->uuid }}" {{-- @if(isset($usergame) && $game->name == $usergame) selected @endif --}}>
@@ -56,7 +56,7 @@
     </div>
     <div class="col-sm-3">
         <div class="form-group">
-         <label>Dispositivo *</label>
+         <label>Dispositivo </label>
          <select name="device_id" class="form-control">
             <option value="">Escolha</option>
                 @foreach($devices as $device)
@@ -70,6 +70,9 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
+        <p>
+            <span class="text-danger">* </span>Campo obrigatório
+        </p>
       <div class="form-group">
         <button type="submit" class="btn btn-dark">Enviar</button>
       </div>

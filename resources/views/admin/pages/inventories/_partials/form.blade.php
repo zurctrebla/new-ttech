@@ -4,13 +4,13 @@
     <div class="col-sm-6">
       <div class="form-group">
        <label>Equipamento *</label>
-       <input type="text" name="equipment" class="form-control" placeholder="Nome do Equipamento:" value="{{ $inventory->equipment ?? old('equipment') }}" >
+       <input type="text" name="equipment" class="form-control" placeholder="Nome do Equipamento:" value="{{ $inventory->equipment ?? old('equipment') }}" required>
       </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
          <label>Condição *</label>
-         <input type="text" name="condition" class="form-control" placeholder="Condição:" value="{{ $inventory->condition ?? old('condition') }}" >
+         <input type="text" name="condition" class="form-control" placeholder="Condição:" value="{{ $inventory->condition ?? old('condition') }}" required>
         </div>
     </div>
 </div>
@@ -18,19 +18,19 @@
     <div class="col-sm-4">
       <div class="form-group">
        <label>Marca </label>
-       <input type="text" name="brand" class="form-control" placeholder="Marca:" value="{{ $inventory->brand ?? old('brand') }}" >
+       <input type="text" name="brand" class="form-control" placeholder="Marca:" value="{{ $inventory->brand ?? old('brand') }}">
       </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
          <label>Modelo *</label>
-         <input type="text" name="model" class="form-control" placeholder="Modelo:" value="{{ $inventory->model ?? old('model') }}" >
+         <input type="text" name="model" class="form-control" placeholder="Modelo:" value="{{ $inventory->model ?? old('model') }}" required>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
          <label>Quantidade *</label>
-         <input type="text" name="amount" class="form-control" placeholder="Quantidade Inicial:" value="{{ $inventory->amount ?? old('amount') }}" >
+         <input type="text" name="amount" class="form-control" placeholder="Quantidade Inicial:" value="{{ $inventory->amount ?? old('amount') }}" required>
         </div>
     </div>
 </div>
