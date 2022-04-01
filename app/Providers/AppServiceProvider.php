@@ -28,6 +28,7 @@ use App\Observers\{
     RoleObserver,
     UserObserver
 };
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -49,6 +50,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         User::observe(UserObserver::class);
         Role::observe(RoleObserver::class);
         Permission::observe(PermissionObserver::class);
