@@ -329,7 +329,7 @@ return [
         ],
         [
             'text' => 'Relatório',
-            'url'  => 'admin/inventories',
+            'url'  => 'admin/products/report',
             'icon' => 'fas fa-chart-bar',
             'can'  => 'inventory-index',
         ],

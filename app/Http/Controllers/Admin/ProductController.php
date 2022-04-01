@@ -9,6 +9,7 @@ use App\Http\Resources\{
     InventoryResource,
     ProductResource
 };
+use App\Models\Product;
 use App\Services\{
     InventoryService,
     ProductService
@@ -38,6 +39,23 @@ class ProductController extends Controller
         $products = $this->productService->getProducts();
         $products = ProductResource::collection($products);
         return view('admin.pages.products.index', compact('products'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function report()
+    {
+        // $products = $this->productService->getProducts();
+        // $products = ProductResource::collection($products);
+
+        $products = Product::orderBy('created_at')->get()->groupBy(function($data) {
+            return $data->created_at->format('Y-m-d');
+        });
+
+        return view('admin.pages.products.report', compact('products'));
     }
 
     /**

@@ -55,6 +55,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
      */
     Route::get('/products/opssa', [ProductController::class, 'opssa'])->name('products.opssa');
     Route::get('/products/maintenance', [ProductController::class, 'maintenance'])->name('products.maintenance');
+    Route::get('/products/report', [ProductController::class, 'report'])->name('products.report');
     Route::resource('/products', ProductController::class);
     // Route::post('/products/store', [ProductController::class, 'store']);
     /**
