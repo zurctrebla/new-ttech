@@ -50,6 +50,7 @@
                                           </tr>
                                         </thead>
                                         <tbody>
+<<<<<<< HEAD
                                             @foreach ($products as $day => $product_list)
                                                 <tr>
                                                     <th colspan="3" ><strong>{{ $day }}: {{ $product_list->count() }} Produtos</strong></th>
@@ -71,6 +72,23 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+=======
+                                            @foreach ($products as $product)
+                                                <tr>
+                                                    <td>
+                                                        100
+                                                    </td>
+                                                    <td>
+                                                        {{ $product->inventory->equipment}}
+                                                    </td>
+                                                    <td>
+                                                        ação
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                      </table>
+>>>>>>> b8572976092fe238aff01492a4dc791ba503a746
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>

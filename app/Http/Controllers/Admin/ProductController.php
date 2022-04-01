@@ -48,6 +48,7 @@ class ProductController extends Controller
      */
     public function report()
     {
+<<<<<<< HEAD
         // $products = $this->productService->getProducts();
         // $products = ProductResource::collection($products);
 
@@ -55,6 +56,10 @@ class ProductController extends Controller
             return $data->created_at->format('Y-m-d');
         });
 
+=======
+        $products = $this->productService->getProducts();
+        $products = ProductResource::collection($products);
+>>>>>>> b8572976092fe238aff01492a4dc791ba503a746
         return view('admin.pages.products.report', compact('products'));
     }
 
