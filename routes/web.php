@@ -14,8 +14,13 @@ use App\Http\Controllers\Admin\{
     ReportController,
     UserController
 };
-use App\Http\Controllers\Admin\ACL\PermissionController;
-use App\Http\Controllers\Admin\ACL\RoleController;
+use App\Http\Controllers\Admin\ACL\{
+    PermissionController,
+    PermissionRoleController,
+    RoleController
+
+};
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -24,6 +29,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class);
+
+    /**
+     * Permission x Role
+     */
+    Route::get('/roles/{id}/permission/{idPermission}/detach', [PermissionRoleController::class, 'detachPermissionRole'])->name('roles.permission.detach');   /**ok */
+    Route::post('/roles/{id}/permissions', [PermissionRoleController::class, 'attachPermissionsRole'])->name('roles.permissions.attach');                      /**ok */
+    Route::any('/roles/{id}/permissions/create', [PermissionRoleController::class, 'permissionsAvailable'])->name('roles.permissions.available');
+
+    Route::get('/admin/roles/{id}/permissions', [PermissionRoleController::class, 'permissions'])->name('roles.permissions');                                 /** ok */
+
     Route::resource('/games', GameController::class);
     Route::resource('/devices', DeviceController::class);
     Route::resource('/partners', PartnerController::class);

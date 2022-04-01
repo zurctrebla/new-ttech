@@ -56,6 +56,7 @@
                                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja apagar o nível de acesso ?')">Apagar</button>
                                                         </form>
                                                     @endcan
+                                                    <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-warning"><i class="fas fa-lock"></i></a>
                                                 </span>
                                                 <div class="dropdown d-block d-md-none">
                                                     <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,6 +70,7 @@
                                                         @can('role-delete')
                                                             <button class="dropdown-item" onclick="return confirm('Deseja apagar a permissão?')">Apagar</button>
                                                         @endcan
+                                                        <a href="{{ route('roles.permissions', $role->id) }}" class="dropdown-item"><i class="fas fa-lock"></i></a>
                                                     </div>
                                                 </div>
                                             </td>

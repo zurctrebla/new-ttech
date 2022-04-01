@@ -3,83 +3,115 @@
 namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
+use App\Models\{
+    Permission,
+    Role
+};
+
 use Illuminate\Http\Request;
 
 class PermissionRoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $role, $permission;
+
+    public function __construct(Role $role, Permission $permission)
     {
-        //
+        $this->role = $role;
+        $this->permission = $permission;
+        $this->middleware(['can:roles']);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the Permissions.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function permissions($idRole)
     {
-        //
+        $role = $this->role->find($idRole);
+
+        if (!$role) {
+            return redirect()->back();
+        }
+
+        $permissions = $role->permissions()->paginate();
+
+        return view('admin.pages.roles.permissions.permissions', compact('role', 'permissions'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of the Roles.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function roles($idPermission)
     {
-        //
+        if (!$permission = $this->permission->find($idPermission)) {
+            return redirect()->back();
+        }
+
+        $roles = $permission->roles()->paginate();
+
+        return view('admin.pages.permissions.roles.roles', compact('permission', 'roles'));
     }
 
     /**
-     * Display the specified resource.
+     * Display a listing of Permissions Available.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function permissionsavailable(Request $request, $idRole)
     {
-        //
+        if (!$role = $this->role->find($idRole)) {
+            return redirect()->back();
+        }
+
+        $filters = $request->except('_token');
+
+        $permissions = $role->permissionsAvailable($request->filter);
+
+        return view('admin.pages.roles.permissions.available', compact('role', 'permissions', 'filters'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display a listing of
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function attachPermissionsRole(Request $request, $idRole)
     {
-        //
+        if (!$role = $this->role->find($idRole)) {
+            return redirect()->back();
+        }
+
+        if (!$request->permissions || count($request->permissions) == 0) {
+            return redirect()
+                        ->back()
+                        ->with('info', 'Precisa escolher pelo menos uma permissão');
+        }
+
+        $role->permissions()->attach($request->permissions);
+
+        return redirect()->route('roles.permissions', $role->id);
     }
 
     /**
-     * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function detachPermissionRole($idRole, $idPermission)
     {
-        //
+        $role = $this->role->find($idRole);
+        $permission = $this->permission->find($idPermission);
+
+        if (!$role || !$permission) {
+            return redirect()->back();
+        }
+
+        $role->permissions()->detach($permission);
+
+        return redirect()->route('roles.permissions', $role->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
