@@ -41,6 +41,18 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function report()
+    {
+        $products = $this->productService->getProducts();
+        $products = ProductResource::collection($products);
+        return view('admin.pages.products.report', compact('products'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
