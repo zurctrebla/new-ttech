@@ -19,6 +19,10 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+# \
+#acaddocker-php-ext-configure zip --with-libzip
+#RUN docker-php-ext-configure zip --with-libzip
+#RUN docker-php-ext-install zip --with-libzip
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

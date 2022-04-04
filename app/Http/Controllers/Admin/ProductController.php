@@ -9,13 +9,15 @@ use App\Http\Resources\{
     InventoryResource,
     ProductResource
 };
+use App\Imports\ProductsImport; /** Excel */
 use App\Models\Product;
 use App\Services\{
     InventoryService,
     ProductService
 };
-use DOMDocument;
+
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;    /** Excel */
 
 class ProductController extends Controller
 {
@@ -97,11 +99,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\StoreUpdateProduct $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateProduct $request)
+    public function store(Request $request)
     {
         if ($request->hasFile('file') && $request->file->isValid()) {
             $name = $request->file->getClientOriginalName();
             $data['file'] = $request->file->storeAs('files', $name); //upload file
+
+            $products =  Excel::import(new ProductsImport, $request->file('file'));
+
+            dd($products);
 
             return redirect()->route('products.opssa')->with('message', 'Lançamento de planilha realizado com sucesso');
         }
