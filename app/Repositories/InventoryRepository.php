@@ -18,8 +18,18 @@ class InventoryRepository
         return $this->entity->get();
     }
 
+    public function getAllInventoriesToMaintenance()
+    {
+        return $this->entity->where('export', 'Y')->where('status', 'Ativo')->get();
+    }
+
     public function createNewInventory(array $data)
     {
+        $data['after'] = "0";
+        $data['before'] = $data['amount'];
+        // dd($data);
+        // return $this->entity->logs()->create($data);
+
         return $this->entity->create($data);
     }
 

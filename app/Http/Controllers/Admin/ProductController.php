@@ -88,7 +88,7 @@ class ProductController extends Controller
      */
     public function maintenance()
     {
-        $inventories = $this->inventoryService->getInventories();
+        $inventories = $this->inventoryService->getInventoriesToMaintenance();
         $inventories = InventoryResource::collection($inventories);
         return view('admin.pages.products.maintenance', compact('inventories'));
     }
@@ -99,7 +99,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\StoreUpdateProduct $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProduct $request)
     {
         if ($request->hasFile('file') && $request->file->isValid()) {
             $name = $request->file->getClientOriginalName();

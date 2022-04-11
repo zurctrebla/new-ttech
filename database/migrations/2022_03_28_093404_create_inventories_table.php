@@ -22,8 +22,8 @@ class CreateInventoriesTable extends Migration
             $table->string('model')->unique();
             $table->string('condition');
             $table->integer('amount');
-            $table->enum('status', ['Ativo', 'Inativo']);
-            $table->enum('export', ['Y', 'N'])/* ->default('Y') */;
+            $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
+            $table->enum('export', ['Y', 'N'])->default('N');
             $table->double('price', 10, 2)->nullable();
             $table->timestamps();
         });

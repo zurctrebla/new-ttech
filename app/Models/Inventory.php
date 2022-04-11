@@ -9,7 +9,7 @@ class Inventory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'equipment', 'brand', 'model', 'condition', 'amount', 'status'];
+    protected $fillable = ['user_id', 'equipment', 'brand', 'model', 'condition', 'amount', 'status', 'export'];
 
     /**
      * Get User
@@ -24,7 +24,7 @@ class Inventory extends Model
      */
     public function logs()
     {
-        return $this->hasMany(Log::class);
+        return $this->belongsTo(Log::class);
     }
 
 }

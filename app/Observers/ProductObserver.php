@@ -21,14 +21,14 @@ class ProductObserver
             $product->status = 'Finalizado';
         }
 
-        // $product->inventory->amount--;
-        // $product->inventory->update();  // salva dados
+        $product->inventory->amount--;
+        $product->inventory->update();  // salva dados
 
-        $product->inventory->logs->user_id = Auth()->user()->id;
-        $product->inventory->logs->after = $product->inventory->amount;
-        $product->inventory->amount--;                                      // atualiza estoque
-        $product->inventory->logs->before = $product->inventory->amount;
-        $product->inventory->update();                                      // salva dados
+        // $product->inventory->logs->user_id = Auth()->user()->id;
+        // $product->inventory->logs->after = $product->inventory->amount;
+        // $product->inventory->amount--;                                      // atualiza estoque
+        // $product->inventory->logs->before = $product->inventory->amount;
+        // $product->inventory->update();                                      // salva dados
         // $product->inventory->logs->create();
 
     }

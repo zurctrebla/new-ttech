@@ -18,6 +18,11 @@ class InventoryService
         return $this->inventoryRepository->getAllInventories();
     }
 
+    public function getInventoriesToMaintenance()
+    {
+        return $this->inventoryRepository->getAllInventoriesToMaintenance();
+    }
+
     public function createNewInventory(array $data)
     {
         return $this->inventoryRepository->createNewInventory($data);
