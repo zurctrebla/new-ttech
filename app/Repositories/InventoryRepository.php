@@ -29,8 +29,9 @@ class InventoryRepository
         $data['before'] = $data['amount'];
         // dd($data);
         // return $this->entity->logs()->create($data);
-
         return $this->entity->create($data);
+        // $this->entity->create($data);
+
     }
 
     public function getInventoryByUuid(string $identify)

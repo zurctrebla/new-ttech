@@ -60,6 +60,41 @@ class ProductController extends Controller
         return view('admin.pages.products.report', compact('products'));
     }
 
+    public function test()
+    {
+        $products = Product::all();
+
+        // return $products->groupBy('inventory_id');
+
+        // return $products->groupBy(function($data) {
+        //     return $data->created_at->format('Y');
+        // });
+
+        return $products->groupBy(['inventory_id',function($data) {
+            return $data->created_at->format('Y');
+        }]);
+
+        // return $products->groupBy('inventory_id')
+        //                 ->groupBy('created_at')
+        //                 ->all();
+
+        // return $products->with(['inventories' => function ($query){
+
+        //                         $query->where('inventory_id', 1);
+
+        //                     }])
+        //                     ->groupBy('created_at');
+
+       /*  $roles = $this->role
+                            ->with(['users' => function ($query) {
+
+                                $query->where('user_id','1');
+
+                            }])
+                            ->orderBy('created_at', 'DESC')->paginate(); */
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -24,7 +24,7 @@ class Inventory extends Model
      */
     public function logs()
     {
-        return $this->belongsTo(Log::class);
+        return $this->hasMany(Log::class);
     }
 
 }
