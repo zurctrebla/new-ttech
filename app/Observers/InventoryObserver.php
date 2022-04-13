@@ -21,7 +21,6 @@ class InventoryObserver
         if ($inventory->export == "on") {
             $inventory->export = "Y";
         }
-
     }
 
     /**

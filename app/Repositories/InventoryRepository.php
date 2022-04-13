@@ -25,13 +25,12 @@ class InventoryRepository
 
     public function createNewInventory(array $data)
     {
-        $data['after'] = "0";
-        $data['before'] = $data['amount'];
-        // dd($data);
-        // return $this->entity->logs()->create($data);
-        return $this->entity->create($data);
-        // $this->entity->create($data);
-
+        $inventory = $this->entity->create($data);
+        return $inventory->logs()->create([
+            'after' => "0",
+            'before' => $data['amount'],
+            'user_id' => $inventory->user_id,
+        ]);
     }
 
     public function getInventoryByUuid(string $identify)
@@ -42,14 +41,12 @@ class InventoryRepository
     public function deleteInventoryByUuid(string $identify)
     {
         $inventory = $this->getInventoryByUuid($identify, false);
-
         return $inventory->delete();
     }
 
     public function updateInventoryByUuid(string $identify, array $data)
     {
         $inventory = $this->getInventoryByUuid($identify, false);
-
         return $inventory->update($data);
     }
 }
