@@ -21,8 +21,14 @@ class ProductObserver
             $product->status = 'Finalizado';
         }
 
+        $data['after'] = $product->inventory->amount;
         $product->inventory->amount--;  // atualiza estoque.
+
+        $data['before'] = $product->inventory->amount;
+        $data['user_id'] = Auth()->user()->id;
+
         $product->inventory->update();  // salva dados.
+        $product->inventory->logs()->create($data);
     }
 
     /**
