@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\ACL\{
     RoleController
 
 };
-
+use App\Http\Controllers\AnnotationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -76,5 +76,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('annotate', [AnnotationController::class, 'displayForm'])->name('displayForm');
+
+Route::post('annotate', [AnnotationController::class, 'annotateImage'])->name('annotateImage');
 
 Auth::routes();
