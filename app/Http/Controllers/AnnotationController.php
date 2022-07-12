@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use GoogleCloudVision\GoogleCloudVision;
 use GoogleCloudVision\Request\AnnotateImageRequest;
 
-//use Image;
-use Intervention\Image\ImageManagerStatic as Image;
+use Image;
+//use Intervention\Image\ImageManagerStatic as Image;
 
 class AnnotationController extends Controller
 {
