@@ -7,9 +7,8 @@ use GoogleCloudVision\GoogleCloudVision;
 use GoogleCloudVision\Request\AnnotateImageRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
 use Image;
-//use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Response;
 
 class AnnotationController extends Controller
 {
@@ -23,23 +22,32 @@ class AnnotationController extends Controller
     {
         if($request->file('image')){
 
-            //  resize image with Intervention/Image
-            // $nameFile = Str::kebab($request->file('image')->getClientOriginalName());
-            // $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
-            // dd($image);
-            // Storage::put($nameFile, $image->encode());
+            // resize as save image with Intervention/Image
+            $nameFile = Str::kebab($request->file('image')->getClientOriginalName());
 
+            $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+
+            // if (Storage::put($nameFile, $image)) {  //   SALVA IMAGEM
+            //     # code...
+            //     return $arquivo = Image::make(Storage::get("public/storage/{$nameFile}"));
+            // };
+
+            // return asset("storage/{$nameFile}");
+            // dd($request->file($image));
+            // $tmp = "{$nameFile}";
+            // $tmp = Storage::get($nameFile);
+            // Storage::url("{{$nameFile}}")
+            // $teste = Image::make($tmp);
+            // return $teste->response($teste);
+            // return $image->response();
             // $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
             // return $image->response();
-            // convert image to base64
-            // $image = base64_encode(file_get_contents($request->file('image')));
-            // $image = base64_encode(file_get_contents($image));
 
             // convert image to base64
             $image = base64_encode(file_get_contents($request->file('image')));
-            // $image = Image::make($image)->resize(800,600)/* ->encode('jpg', 90) */;
-
+            // $image = base64_encode(file_get_contents($request->file('image')));
             // return $image->response();
+
             //  prepare request
             $request = new AnnotateImageRequest();
             $request->setImage($image);
