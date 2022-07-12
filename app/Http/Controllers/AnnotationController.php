@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GoogleCloudVision\GoogleCloudVision;
 use GoogleCloudVision\Request\AnnotateImageRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use Image;
 //use Intervention\Image\ImageManagerStatic as Image;
@@ -22,20 +24,23 @@ class AnnotationController extends Controller
         if($request->file('image')){
 
             //  resize image with Intervention/Image
-            $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+            // $nameFile = Str::kebab($request->file('image')->getClientOriginalName());
+            // $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+            // dd($image);
+            // Storage::put($nameFile, $image->encode());
 
-            //return $image->response();
-
-            // $image = Image::make($request->file('image'))->encode('jpg', 10)->resize(200,200);
-            // return $image->response();  //  ok
-            // return $request->file('image');   //  ok
-            // $image->resize(320,320);
+            // $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+            // return $image->response();
+            // convert image to base64
+            // $image = base64_encode(file_get_contents($request->file('image')));
+            // $image = base64_encode(file_get_contents($image));
 
             // convert image to base64
             $image = base64_encode(file_get_contents($request->file('image')));
-            // $image = base64_encode(file_get_contents($image));
+            // $image = Image::make($image)->resize(800,600)/* ->encode('jpg', 90) */;
 
-            //prepare request
+            // return $image->response();
+            //  prepare request
             $request = new AnnotateImageRequest();
             $request->setImage($image);
             $request->setFeature("TEXT_DETECTION");
