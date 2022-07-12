@@ -22,8 +22,9 @@ class AnnotationController extends Controller
         if($request->file('image')){
 
             //  resize image with Intervention/Image
-             $image = Image::make($request->file('image'))->resize(600,600)->encode('jpg', 90);
-             return $image->response();
+            $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+
+            //return $image->response();
 
             // $image = Image::make($request->file('image'))->encode('jpg', 10)->resize(200,200);
             // return $image->response();  //  ok
