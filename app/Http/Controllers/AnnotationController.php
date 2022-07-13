@@ -23,9 +23,15 @@ class AnnotationController extends Controller
         if($request->file('image')){
 
             // resize as save image with Intervention/Image
+
             $nameFile = Str::kebab($request->file('image')->getClientOriginalName());
 
             $image = Image::make($request->file('image'))->resize(800,600)->encode('jpg', 90);
+
+            // $path = $image->store('imagens');
+            $path = $request->file('image')->store('imagens');
+            $tmp = storage_path($path);
+            $image = base64_encode(file_get_contents($tmp));
 
             // if (Storage::put($nameFile, $image)) {  //   SALVA IMAGEM
             //     # code...
@@ -44,7 +50,7 @@ class AnnotationController extends Controller
             // return $image->response();
 
             // convert image to base64
-            $image = base64_encode(file_get_contents($request->file('image')));
+            // $image = base64_encode(file_get_contents($request->file('image')));
             // $image = base64_encode(file_get_contents($request->file('image')));
             // return $image->response();
 
